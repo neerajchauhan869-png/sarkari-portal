@@ -1,28 +1,26 @@
 const SARKARI_DATA = [
   {
-    "id": "ssc-no-latest-notification",
-    "title": "No Latest Notification/Admit Card/Result Found",
+    "id": "no-notification-found",
+    "title": "No Latest Notification Found",
     "organization": "SSC",
     "category": "SSC",
     "section": "Latest Jobs",
-    "qualification": "N/A",
-    "totalPosts": "N/A",
-    "status": "Not Available",
+    "qualification": "TBA",
+    "totalPosts": "TBA",
+    "status": "N/A",
     "lastDate": "N/A",
-    "badgeColor": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "badgeColor": "bg-gray-100 text-gray-800 border-gray-300",
     "minAge": null,
     "maxAge": null,
     "ageRelaxation": "N/A",
     "fees": "N/A",
     "aiSummary": [
-      "No latest exam notification, admit card, or result information was found in the provided webpage content.",
-      "The content primarily consists of HTML head section, meta tags, and CSS/JS loading scripts for the SSC website.",
-      "No specific job, admit card, or result details could be extracted."
+      "No latest exam notification, admit card, or result found in the provided content."
     ],
     "links": {
-      "actionLabel": "Visit Official Website",
+      "actionLabel": "View Website",
       "actionUrl": "https://ssc.gov.in",
-      "officialPdf": "https://ssc.gov.in",
+      "officialPdf": "N/A",
       "officialWebsite": "https://ssc.gov.in"
     }
   }
