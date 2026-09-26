@@ -1,4 +1,4 @@
-const jobData = [
+const SARKARI_DATA = [
   // ================= LATEST JOBS (ACTIVE APPLICATION) =================
   {
     id: "ssc-chsl-2026",
@@ -223,5 +223,5 @@ const jobData = [
 ];
 
 if (typeof module !== "undefined") {
-  module.exports = jobData;
+  module.exports = const jobData = SARKARI_DATA;;
 }
