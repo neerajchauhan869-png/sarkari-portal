@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SarkariAI - Next-Gen Sarkari Alert & AI Candidate Portal</title>
+  <meta name="description" content="Fastest Sarkari Results, Admit Cards, Latest Jobs with 1-Minute AI Gazette Summaries, Age & Reservation Calculator, and Photo Resizer.">
+  
+  <!-- Tailwind CSS CDN for instant styling -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#0f172a',
+            },
+            sarkariRed: '#dc2626',
+            sarkariGreen: '#059669',
+            sarkariBlue: '#2563eb',
+            sarkariOrange: '#ea580c'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Ultra-fast custom utilities & pulse effects */
+    @keyframes pulse-subtle {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.85; transform: scale(1.03); }
+    }
+    .animate-pulse-subtle {
+      animation: pulse-subtle 2s infinite ease-in-out;
+    }
+    .scrollbar-thin::-webkit-scrollbar {
+      height: 6px;
+      width: 6px;
+    }
+    .scrollbar-thin::-webkit-scrollbar-thumb {
+      background-color: #cbd5e1;
+      border-radius: 9999px;
+    }
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    /* Fast highlight animation for search */
+    .highlight-match {
+      background-color: #fef08a;
+      color: #854d0e;
+      padding: 0 2px;
+      border-radius: 2px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans antialiased min-h-screen flex flex-col selection:bg-blue-600 selection:text-white">
+
+  <!-- Top Breaking News & Community Marquee Bar -->
+  <div class="bg-slate-900 text-slate-200 text-xs py-2 px-3 border-b border-slate-800">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+      <div class="flex items-center gap-2 overflow-hidden w-full sm:w-auto">
+        <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[11px] font-bold bg-red-600 text-white animate-pulse">
+          <span class="w-1.5 h-1.5 rounded-full bg-white"></span> LIVE
+        </span>
+        <div class="truncate text-slate-300">
+          <span class="font-semibold text-amber-400">SSC CGL 2026</span> (17,727 Vacancies) Form Ends in 4 Days • 
+          <span class="font-semibold text-emerald-400">RRB NTPC</span> Exam City Slip Live • 
+          <span class="font-semibold text-sky-400">UP Police SI</span> Physical Standards Announced
+        </div>
+      </div>
+      <div class="flex items-center gap-3 text-[11px] shrink-0">
+        <span class="text-slate-400 hidden md:inline">⚡ 0.4s Fast Load • 100% Free Candidate Utilities</span>
+        <a href="post-template.html?post=ssc-cgl-2026#age-calculator" class="text-amber-400 hover:text-amber-300 font-medium underline flex items-center gap-1">
+          <span>🎂 Age Calculator</span>
+        </a>
+        <a href="post-template.html?post=ssc-cgl-2026#photo-resizer" class="text-cyan-400 hover:text-cyan-300 font-medium underline flex items-center gap-1">
+          <span>📐 Photo Resizer</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Header & Top Navigation Bar -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-40 shadow-sm backdrop-blur-md bg-white/95">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5">
+      <div class="flex items-center justify-between gap-4">
+        
+        <!-- Logo & Branding -->
+        <a href="index.html" class="flex items-center gap-2.5 group shrink-0">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-700 via-indigo-600 to-amber-500 flex items-center justify-center shadow-md shadow-blue-500/20 text-white font-black text-xl tracking-tighter group-hover:scale-105 transition-transform">
+            S<span class="text-amber-300">A</span>
+          </div>
+          <div>
+            <div class="flex items-center gap-1.5">
+              <span class="text-2xl font-black tracking-tight text-slate-900">Sarkari<span class="text-blue-600">AI</span></span>
+              <span class="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 bg-gradient-to-r from-blue-600 to-indigo-600 text-white rounded shadow-sm">v2.0</span>
+            </div>
+            <p class="text-[10px] text-slate-500 font-semibold tracking-wide uppercase">Next-Gen Sarkari Alert & Utility Hub</p>
+          </div>
+        </a>
+
+        <!-- Instant Client-Side Search Bar -->
+        <div class="flex-1 max-w-xl hidden md:block">
+          <div class="relative">
+            <input 
+              type="text" 
+              id="globalSearchInput" 
+              placeholder="Search 5,000+ jobs, results, admit cards (e.g. SSC, Police, 10th Pass, SI)..." 
+              class="w-full bg-slate-100 hover:bg-slate-50 focus:bg-white text-slate-800 placeholder-slate-400 text-sm rounded-xl pl-10 pr-10 py-2.5 border border-slate-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-100 transition-all outline-none"
+            >
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            </div>
+            <button 
+              id="clearSearchBtn" 
+              class="hidden absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 text-xs font-bold"
+              title="Clear search"
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+
+        <!-- High-Visibility Community Social CTA Buttons -->
+        <div class="flex items-center gap-2 shrink-0">
+          <!-- Telegram Button -->
+          <a 
+            href="https://telegram.org" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-sky-500 hover:bg-sky-600 text-white font-bold text-xs sm:text-sm shadow-sm hover:shadow-md transition-all active:scale-95"
+            title="Join Official Telegram Channel"
+          >
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"/></svg>
+            <span class="hidden sm:inline">Telegram</span>
+            <span class="bg-sky-600/80 px-1.5 py-0.5 rounded text-[10px] font-extrabold hidden lg:inline">1.4M</span>
+          </a>
+
+          <!-- WhatsApp Button -->
+          <a 
+            href="https://whatsapp.com" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm shadow-sm hover:shadow-md transition-all active:scale-95"
+            title="Join Official WhatsApp Channel"
+          >
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19.01L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.04 7.03C8.84 7.03 8.5 7.11 8.22 7.41C7.94 7.72 7.15 8.46 7.15 9.96C7.15 11.46 8.24 12.91 8.4 13.11C8.55 13.32 10.56 16.42 13.64 17.75C14.37 18.07 14.95 18.26 15.39 18.4C16.13 18.64 16.8 18.6 17.33 18.52C17.92 18.43 19.16 17.77 19.41 17.06C19.67 16.35 19.67 15.75 19.59 15.62C19.51 15.5 19.31 15.42 19.01 15.27C18.7 15.12 17.22 14.39 16.94 14.29C16.67 14.19 16.47 14.14 16.27 14.44C16.07 14.74 15.49 15.42 15.32 15.62C15.14 15.82 14.96 15.85 14.66 15.7C14.35 15.55 13.37 15.23 12.21 14.19C11.31 13.39 10.7 12.4 10.53 12.1C10.35 11.8 10.51 11.64 10.66 11.49C10.8 11.35 10.97 11.13 11.13 10.95C11.28 10.76 11.33 10.63 11.44 10.43C11.54 10.23 11.49 10.05 11.41 9.9C11.34 9.75 10.73 8.25 10.47 7.64C10.23 7.05 9.98 7.13 9.8 7.12C9.63 7.11 9.43 7.11 9.23 7.11L9.04 7.03Z"/></svg>
+            <span class="hidden sm:inline">WhatsApp</span>
+            <span class="bg-emerald-700/80 px-1.5 py-0.5 rounded text-[10px] font-extrabold hidden lg:inline">950K</span>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Mobile Search Field -->
+      <div class="mt-3 block md:hidden">
+        <div class="relative">
+          <input 
+            type="text" 
+            id="mobileSearchInput" 
+            placeholder="Search all jobs, results, hall tickets..." 
+            class="w-full bg-slate-100 text-slate-800 placeholder-slate-400 text-sm rounded-xl pl-9 pr-8 py-2 border border-slate-300 focus:bg-white focus:border-blue-500 focus:ring-2 focus:ring-blue-100 outline-none"
+          >
+          <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Interactive Quick Qualification Filter Pills Bar -->
+  <section class="bg-white border-b border-slate-200 py-3 shadow-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-2 overflow-x-auto scrollbar-thin pb-1 sm:pb-0">
+        <span class="text-xs font-bold text-slate-500 uppercase tracking-wider shrink-0 flex items-center gap-1 mr-1">
+          <svg class="w-3.5 h-3.5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
+          Filter:
+        </span>
+        
+        <button data-filter="All" class="filter-pill active px-3.5 py-1.5 rounded-full text-xs font-bold tracking-tight transition-all shrink-0 bg-blue-600 text-white shadow-sm hover:shadow">
+          All Notifications <span class="ml-1 opacity-80" id="count-All">(36)</span>
+        </button>
+        <button data-filter="10th Pass" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold tracking-tight transition-all shrink-0 bg-slate-100 hover:bg-slate-200 text-slate-700">
+          10th Pass <span class="ml-1 text-slate-400 text-[10px]" id="count-10th">(5)</span>
+        </button>
+        <button data-filter="12th Pass" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold tracking-tight transition-all shrink-0 bg-slate-100 hover:bg-slate-200 text-slate-700">
+          12th Pass <span class="ml-1 text-slate-400 text-[10px]" id="count-12th">(7)</span>
+        </button>
+        <button data-filter="Graduate" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold tracking-tight transition-all shrink-0 bg-slate-100 hover:bg-slate-200 text-slate-700">
+          Graduate <span class="ml-1 text-slate-400 text-[10px]" id="count-Grad">(14)</span>
+        </button>
+        <button data-filter="B.Tech / Engineering" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold tracking-tight transition-all shrink-0 bg-slate-100 hover:bg-slate-200 text-slate-700">
+          B.Tech / Engineering <span class="ml-1 text-slate-400 text-[10px]" id="count-Tech">(3)</span>
+        </button>
+        <button data-filter="Teaching" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold tracking-tight transition-all shrink-0 bg-slate-100 hover:bg-slate-200 text-slate-700">
+          Teaching / B.Ed <span class="ml-1 text-slate-400 text-[10px]" id="count-Teach">(4)</span>
+        </button>
+        <button data-filter="Police / Defense" class="filter-pill px-3.5 py-1.5 rounded-full text-xs font-bold tracking-tight transition-all shrink-0 bg-slate-100 hover:bg-slate-200 text-slate-700">
+          Police / Defense <span class="ml-1 text-slate-400 text-[10px]" id="count-Def">(5)</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Filter Feedback & Results Count Notice -->
+  <div id="filterAlertBar" class="hidden bg-blue-50 border-b border-blue-200 py-2 px-4 text-xs font-medium text-blue-800">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <span id="filterAlertText">Showing all matching notices</span>
+      <button onclick="resetAllFilters()" class="text-blue-700 hover:text-blue-900 underline font-bold">Clear Filters</button>
+    </div>
+  </div>
+
+  <!-- Main Container -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-8 flex-1 w-full">
+
+    <!-- Section: 8 Trending Updates High-Contrast Vibrant Cards Grid -->
+    <section>
+      <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center gap-2">
+          <div class="w-2.5 h-6 bg-red-600 rounded-full"></div>
+          <h2 class="text-lg sm:text-xl font-black text-slate-900 tracking-tight flex items-center gap-2">
+            Trending Recruitment Drives
+            <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-red-100 text-red-700 border border-red-200">Active Now</span>
+          </h2>
+        </div>
+        <span class="text-xs text-slate-500 font-medium hidden sm:inline">Click any card to launch interactive AI summary</span>
+      </div>
+
+      <!-- 8 Trending Cards Grid -->
+      <div id="trendingGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+        <!-- Rendered dynamically by JS from SARKARI_DATA -->
+      </div>
+    </section>
+
+    <!-- Strategic AdSense Slot #1: Clean Non-Intrusive Sponsored Banner -->
+    <div class="my-6">
+      <div class="w-full bg-gradient-to-r from-slate-100 via-slate-50 to-slate-100 border border-dashed border-slate-300 rounded-2xl p-4 sm:p-5 text-center relative overflow-hidden group hover:border-slate-400 transition-colors">
+        <span class="absolute top-2 right-3 text-[10px] font-bold uppercase tracking-wider text-slate-400">
+          [Advertisement Space - Sponsored Partner Announcement]
+        </span>
+        <div class="max-w-2xl mx-auto py-2">
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-lg shrink-0">
+              ⚡
+            </div>
+            <div class="text-center sm:text-left">
+              <h4 class="text-sm font-bold text-slate-800">SSC & Railway 2026 Free Mock Test Series & Live Rank Predictor</h4>
+              <p class="text-xs text-slate-500">Practice 10,000+ bilingual questions with AI accuracy metrics and detailed video solutions.</p>
+            </div>
+            <a href="post-template.html?post=ssc-cgl-2026" class="mt-2 sm:mt-0 px-4 py-2 bg-slate-900 hover:bg-blue-600 text-white text-xs font-bold rounded-xl transition-colors shrink-0">
+              Start Free Test
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Candidate AI Interactive Utility Banner -->
+    <section class="bg-gradient-to-r from-indigo-900 via-slate-900 to-blue-950 rounded-2xl p-5 sm:p-6 text-white shadow-lg relative overflow-hidden">
+      <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-blue-500/10 rounded-full blur-2xl pointer-events-none"></div>
+      <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-6">
+        <div class="space-y-1.5 text-center lg:text-left">
+          <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-400/20 text-amber-300 text-xs font-bold border border-amber-400/30">
+            <span>✨ Candidate AI Superpowers</span>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-black tracking-tight">Stop Wasting Hours on 60-Page PDF Gazettes</h3>
+          <p class="text-xs sm:text-sm text-slate-300 max-w-xl">
+            Check age eligibility down to the exact day, resize your photos to strict 20KB-50KB specs, and read condensed exam blueprints in 60 seconds.
+          </p>
+        </div>
+        <div class="flex flex-wrap items-center justify-center gap-3 shrink-0">
+          <a href="post-template.html?post=ssc-cgl-2026#ai-brief" class="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold text-xs transition-all flex items-center gap-2">
+            <span>⚡ 1-Minute AI Brief</span>
+          </a>
+          <a href="post-template.html?post=ssc-cgl-2026#age-calculator" class="px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs transition-all flex items-center gap-2 shadow-sm">
+            <span>🎂 Age Calculator</span>
+          </a>
+          <a href="post-template.html?post=ssc-cgl-2026#photo-resizer" class="px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs transition-all flex items-center gap-2 shadow-sm">
+            <span>📐 Photo Resizer (20-50KB)</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORE 3-COLUMN RESPONSIVE RECRUITMENT GRID -->
+    <section>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- COLUMN 1: LATEST RESULTS -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
+          <!-- Column Header -->
+          <div class="bg-gradient-to-r from-red-600 to-rose-700 text-white px-4 py-3.5 flex items-center justify-between">
+            <div class="flex items-center gap-2.5">
+              <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center font-bold text-base">
+                🏆
+              </div>
+              <div>
+                <h3 class="font-extrabold text-base tracking-tight leading-tight">Latest Results</h3>
+                <span class="text-[11px] text-rose-100 font-medium">Merit Lists & Scorecards</span>
+              </div>
+            </div>
+            <span id="col1-count" class="bg-white/20 px-2 py-0.5 rounded-full text-xs font-bold">8</span>
+          </div>
+
+          <!-- Items Container -->
+          <div id="resultsList" class="divide-y divide-slate-100 flex-1 overflow-y-auto max-h-[580px] scrollbar-thin p-1">
+            <!-- Rendered by JS -->
+          </div>
+
+          <!-- Footer View More -->
+          <div class="bg-slate-50 border-t border-slate-100 p-2.5 text-center">
+            <a href="post-template.html?post=ssc-cgl-2026" class="text-xs font-bold text-red-600 hover:text-red-700 inline-flex items-center gap-1 group">
+              View All Result Archives
+              <span class="group-hover:translate-x-0.5 transition-transform">→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- COLUMN 2: ADMIT CARD / HALL TICKETS -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
+          <!-- Column Header -->
+          <div class="bg-gradient-to-r from-blue-600 to-indigo-700 text-white px-4 py-3.5 flex items-center justify-between">
+            <div class="flex items-center gap-2.5">
+              <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center font-bold text-base">
+                🎟️
+              </div>
+              <div>
+                <h3 class="font-extrabold text-base tracking-tight leading-tight">Admit Card</h3>
+                <span class="text-[11px] text-blue-100 font-medium">Hall Tickets & City Slips</span>
+              </div>
+            </div>
+            <span id="col2-count" class="bg-white/20 px-2 py-0.5 rounded-full text-xs font-bold">8</span>
+          </div>
+
+          <!-- Items Container -->
+          <div id="admitCardList" class="divide-y divide-slate-100 flex-1 overflow-y-auto max-h-[580px] scrollbar-thin p-1">
+            <!-- Rendered by JS -->
+          </div>
+
+          <!-- Footer View More -->
+          <div class="bg-slate-50 border-t border-slate-100 p-2.5 text-center">
+            <a href="post-template.html?post=rrb-ntpc-2026" class="text-xs font-bold text-blue-600 hover:text-blue-700 inline-flex items-center gap-1 group">
+              View All Hall Tickets
+              <span class="group-hover:translate-x-0.5 transition-transform">→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- COLUMN 3: LATEST JOBS / ONLINE FORMS -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col h-full">
+          <!-- Column Header -->
+          <div class="bg-gradient-to-r from-emerald-600 to-teal-700 text-white px-4 py-3.5 flex items-center justify-between">
+            <div class="flex items-center gap-2.5">
+              <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center font-bold text-base">
+                💼
+              </div>
+              <div>
+                <h3 class="font-extrabold text-base tracking-tight leading-tight">Latest Jobs</h3>
+                <span class="text-[11px] text-emerald-100 font-medium">Online Forms & Deadlines</span>
+              </div>
+            </div>
+            <span id="col3-count" class="bg-white/20 px-2 py-0.5 rounded-full text-xs font-bold">8</span>
+          </div>
+
+          <!-- Items Container -->
+          <div id="latestJobsList" class="divide-y divide-slate-100 flex-1 overflow-y-auto max-h-[580px] scrollbar-thin p-1">
+            <!-- Rendered by JS -->
+          </div>
+
+          <!-- Footer View More -->
+          <div class="bg-slate-50 border-t border-slate-100 p-2.5 text-center">
+            <a href="post-template.html?post=ssc-cgl-2026" class="text-xs font-bold text-emerald-600 hover:text-emerald-700 inline-flex items-center gap-1 group">
+              View All 5,000+ Govt Vacancies
+              <span class="group-hover:translate-x-0.5 transition-transform">→</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECONDARY GRID: ANSWER KEYS, SYLLABUS, ADMISSIONS -->
+    <section>
+      <div class="flex items-center gap-2 mb-4">
+        <div class="w-2.5 h-6 bg-slate-700 rounded-full"></div>
+        <h2 class="text-lg sm:text-xl font-black text-slate-900 tracking-tight">
+          Candidate Essentials: Answer Keys, Syllabus & Admissions
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <!-- Answer Keys Column -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4">
+          <div class="flex items-center gap-2 pb-3 border-b border-slate-100 mb-3">
+            <span class="text-lg">🔑</span>
+            <h3 class="font-bold text-slate-900 text-sm">Answer Key & Objections</h3>
+          </div>
+          <div id="answerKeysList" class="space-y-3">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Syllabus Column -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4">
+          <div class="flex items-center gap-2 pb-3 border-b border-slate-100 mb-3">
+            <span class="text-lg">📚</span>
+            <h3 class="font-bold text-slate-900 text-sm">Syllabus & Exam Pattern</h3>
+          </div>
+          <div id="syllabusList" class="space-y-3">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+        <!-- Admissions & DV Column -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-4">
+          <div class="flex items-center gap-2 pb-3 border-b border-slate-100 mb-3">
+            <span class="text-lg">🎓</span>
+            <h3 class="font-bold text-slate-900 text-sm">Admission & Verification</h3>
+          </div>
+          <div id="admissionsList" class="space-y-3">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Strategic AdSense Slot #2: Bottom Responsive Banner -->
+    <div class="my-6">
+      <div class="w-full bg-slate-100 border border-dashed border-slate-300 rounded-2xl p-4 text-center">
+        <span class="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-1">
+          [Advertisement Space - Certified Educational Counseling]
+        </span>
+        <p class="text-xs text-slate-600 font-medium">
+          UPSC, SSC CGL & State PCS 2026 Comprehensive Mentorship & Daily Answer Writing Batches.
+        </p>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Modern Clean Footer -->
+  <footer class="bg-slate-900 text-slate-400 border-t border-slate-800 text-xs mt-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        
+        <!-- Brand Info -->
+        <div class="space-y-3 md:col-span-1">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-black text-base">
+              S<span class="text-amber-300">A</span>
+            </div>
+            <span class="text-lg font-black text-white">Sarkari<span class="text-blue-500">AI</span></span>
+          </div>
+          <p class="text-slate-400 leading-relaxed text-xs">
+            A high-speed, candidate-first portal delivering authentic notification summaries, instant age calculators, photo compliance resizers, and real-time updates.
+          </p>
+          <div class="flex items-center gap-3 pt-1">
+            <span class="px-2 py-0.5 rounded bg-slate-800 text-[10px] font-bold text-emerald-400 border border-slate-700">Sub-Second Load</span>
+            <span class="px-2 py-0.5 rounded bg-slate-800 text-[10px] font-bold text-sky-400 border border-slate-700">No Clutter</span>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="text-white font-bold mb-3 uppercase tracking-wider text-[11px]">Popular Exams</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="post-template.html?post=ssc-cgl-2026" class="hover:text-white transition-colors">SSC CGL 2026 Notification</a></li>
+            <li><a href="post-template.html?post=rrb-ntpc-2026" class="hover:text-white transition-colors">Railway RRB NTPC Non-Technical</a></li>
+            <li><a href="post-template.html?post=up-police-si-2026" class="hover:text-white transition-colors">UP Police SI & Constable</a></li>
+            <li><a href="post-template.html?post=ibps-po-2026" class="hover:text-white transition-colors">IBPS PO / Clerk Banking</a></li>
+          </ul>
+        </div>
+
+        <!-- AI Tools -->
+        <div>
+          <h4 class="text-white font-bold mb-3 uppercase tracking-wider text-[11px]">Candidate Utilities</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="post-template.html?post=ssc-cgl-2026#age-calculator" class="hover:text-amber-400 transition-colors">🎂 Age & Reservation Calculator</a></li>
+            <li><a href="post-template.html?post=ssc-cgl-2026#photo-resizer" class="hover:text-cyan-400 transition-colors">📐 Govt Photo & Sign Resizer (20-50KB)</a></li>
+            <li><a href="post-template.html?post=ssc-cgl-2026#ai-brief" class="hover:text-emerald-400 transition-colors">⚡ 1-Minute AI Gazette Digest</a></li>
+            <li><a href="post-template.html?post=ssc-cgl-2026#calendar-sync" class="hover:text-indigo-400 transition-colors">🗓️ 1-Click Google Calendar Alerts</a></li>
+          </ul>
+        </div>
+
+        <!-- Disclaimer -->
+        <div>
+          <h4 class="text-white font-bold mb-3 uppercase tracking-wider text-[11px]">Official Disclaimer</h4>
+          <p class="text-slate-500 leading-relaxed text-[11px]">
+            SarkariAI is an informational & candidate utility platform. We are not affiliated with the Staff Selection Commission, UPSC, Railway Recruitment Boards, or any governmental agency. Always cross-reference crucial dates with the official gazettes published on primary government portals (.gov.in / .nic.in).
+          </p>
+        </div>
+
+      </div>
+
+      <div class="border-t border-slate-800 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-500">
+        <div>© 2026 SarkariAI. Built with HTML5, Tailwind CSS, & Vanilla JS. Supercharged Candidate Experience.</div>
+        <div class="flex items-center gap-4">
+          <a href="#" class="hover:text-slate-400">Privacy Policy</a>
+          <a href="#" class="hover:text-slate-400">Terms of Service</a>
+          <a href="#" class="hover:text-slate-400">Contact Team</a>
+          <a href="#" class="hover:text-slate-400">Sitemap</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Central Data Script -->
+  <script src="data.js"></script>
+
+  <!-- Interactive Client-side Script -->
+  <script>
+    // State management
+    let activeFilter = 'All';
+    let searchQuery = '';
+
+    // DOM Elements
+    const trendingGrid = document.getElementById('trendingGrid');
+    const resultsList = document.getElementById('resultsList');
+    const admitCardList = document.getElementById('admitCardList');
+    const latestJobsList = document.getElementById('latestJobsList');
+    const answerKeysList = document.getElementById('answerKeysList');
+    const syllabusList = document.getElementById('syllabusList');
+    const admissionsList = document.getElementById('admissionsList');
+
+    const globalSearchInput = document.getElementById('globalSearchInput');
+    const mobileSearchInput = document.getElementById('mobileSearchInput');
+    const clearSearchBtn = document.getElementById('clearSearchBtn');
+    const filterPills = document.querySelectorAll('.filter-pill');
+    const filterAlertBar = document.getElementById('filterAlertBar');
+    const filterAlertText = document.getElementById('filterAlertText');
+
+    // Utility: Highlight matching search terms
+    function highlightText(text, query) {
+      if (!query || !query.trim()) return text;
+      const regex = new RegExp(`(${query.trim().replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+      return text.replace(regex, '<span class="highlight-match">$1</span>');
+    }
+
+    // Match checker
+    function itemMatches(item, filter, query) {
+      const q = query.toLowerCase().trim();
+      
+      // Filter check
+      let matchesFilter = true;
+      if (filter !== 'All') {
+        const itemQual = (item.qualification || item.category || '').toLowerCase();
+        const f = filter.toLowerCase();
+        matchesFilter = itemQual.includes(f) || 
+          (f === 'police / defense' && (itemQual.includes('police') || itemQual.includes('defense') || itemQual.includes('airforce'))) ||
+          (f === 'teaching' && (itemQual.includes('teach') || itemQual.includes('b.ed') || itemQual.includes('ctet'))) ||
+          (f === '10th pass' && itemQual.includes('10th')) ||
+          (f === '12th pass' && (itemQual.includes('12th') || itemQual.includes('10+2'))) ||
+          (f === 'graduate' && (itemQual.includes('grad') || itemQual.includes('bachelor') || itemQual.includes('degree'))) ||
+          (f === 'b.tech / engineering' && (itemQual.includes('tech') || itemQual.includes('eng') || itemQual.includes('alp')));
+      }
+
+      if (!matchesFilter) return false;
+
+      // Query check
+      if (!q) return true;
+      const title = (item.title || '').toLowerCase();
+      const subtitle = (item.subtitle || '').toLowerCase();
+      const badge = (item.badge || '').toLowerCase();
+      const qual = (item.qualification || '').toLowerCase();
+      const vacancies = (item.vacancies || '').toLowerCase();
+
+      return title.includes(q) || subtitle.includes(q) || badge.includes(q) || qual.includes(q) || vacancies.includes(q);
+    }
+
+    // Render 8 Trending Cards
+    function renderTrending() {
+      if (!trendingGrid) return;
+      const items = SARKARI_DATA.trending.filter(item => itemMatches(item, activeFilter, searchQuery));
+
+      if (items.length === 0) {
+        trendingGrid.innerHTML = `
+          <div class="col-span-full py-8 text-center bg-white rounded-2xl border border-slate-200">
+            <p class="text-sm font-bold text-slate-700">No trending recruitments match your filter.</p>
+            <button onclick="resetAllFilters()" class="mt-2 text-xs font-bold text-blue-600 underline">Reset all filters</button>
+          </div>
+        `;
+        return;
+      }
+
+      trendingGrid.innerHTML = items.map(item => `
+        <a href="${item.link}" class="group relative block bg-gradient-to-br ${item.gradient} rounded-2xl p-4 text-white shadow-md hover:shadow-xl transition-all duration-200 hover:-translate-y-1 overflow-hidden">
+          <div class="flex items-start justify-between gap-2 mb-3">
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider ${item.badgeColor} text-white shadow-xs">
+              ${item.badge}
+            </span>
+            <span class="text-[10px] font-bold text-white/80 bg-black/25 px-2 py-0.5 rounded-full">
+              ${item.urgentText}
+            </span>
+          </div>
+
+          <h3 class="text-base font-black leading-snug tracking-tight group-hover:text-amber-300 transition-colors line-clamp-2 mb-1">
+            ${highlightText(item.title, searchQuery)}
+          </h3>
+
+          <p class="text-xs text-white/80 font-medium mb-3">
+            ${item.subtitle}
+          </p>
+
+          <div class="pt-2 border-t border-white/20 flex items-center justify-between text-xs font-semibold">
+            <span class="text-amber-300 font-extrabold flex items-center gap-1">
+              <span>👥</span> ${item.vacancies}
+            </span>
+            <span class="inline-flex items-center text-[11px] font-bold text-white group-hover:translate-x-1 transition-transform">
+              AI Brief →
+            </span>
+          </div>
+        </a>
+      `).join('');
+    }
+
+    // Render Column 1: Results
+    function renderResults() {
+      if (!resultsList) return;
+      const items = SARKARI_DATA.results.filter(item => itemMatches(item, activeFilter, searchQuery));
+      document.getElementById('col1-count').textContent = items.length;
+
+      if (items.length === 0) {
+        resultsList.innerHTML = `<div class="p-4 text-center text-xs text-slate-500">No results found matching criteria.</div>`;
+        return;
+      }
+
+      resultsList.innerHTML = items.map(item => `
+        <a href="${item.link}" class="group block p-3 hover:bg-red-50/50 transition-colors">
+          <div class="flex items-start justify-between gap-2 mb-1">
+            <span class="inline-block text-[10px] font-bold px-2 py-0.5 rounded-full border ${item.badgeColor}">
+              ${item.badge}
+            </span>
+            <span class="text-[11px] font-semibold text-slate-400 shrink-0">${item.date}</span>
+          </div>
+          <p class="text-xs font-bold text-slate-800 group-hover:text-red-600 transition-colors leading-snug">
+            ${highlightText(item.title, searchQuery)}
+          </p>
+          <div class="mt-1 flex items-center justify-between text-[11px] text-slate-500">
+            <span class="text-slate-400 font-medium">Eligibility: ${item.qualification}</span>
+            <span class="font-bold text-red-600 opacity-0 group-hover:opacity-100 transition-opacity">Check Score →</span>
+          </div>
+        </a>
+      `).join('');
+    }
+
+    // Render Column 2: Admit Cards
+    function renderAdmitCards() {
+      if (!admitCardList) return;
+      const items = SARKARI_DATA.admitCards.filter(item => itemMatches(item, activeFilter, searchQuery));
+      document.getElementById('col2-count').textContent = items.length;
+
+      if (items.length === 0) {
+        admitCardList.innerHTML = `<div class="p-4 text-center text-xs text-slate-500">No admit cards found matching criteria.</div>`;
+        return;
+      }
+
+      admitCardList.innerHTML = items.map(item => `
+        <a href="${item.link}" class="group block p-3 hover:bg-blue-50/50 transition-colors">
+          <div class="flex items-start justify-between gap-2 mb-1">
+            <span class="inline-block text-[10px] font-bold px-2 py-0.5 rounded-full border ${item.badgeColor}">
+              ${item.badge}
+            </span>
+            <span class="text-[11px] font-semibold text-slate-400 shrink-0">${item.date}</span>
+          </div>
+          <p class="text-xs font-bold text-slate-800 group-hover:text-blue-600 transition-colors leading-snug">
+            ${highlightText(item.title, searchQuery)}
+          </p>
+          <div class="mt-1 flex items-center justify-between text-[11px] text-slate-500">
+            <span class="text-slate-400 font-medium">${item.qualification}</span>
+            <span class="font-bold text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity">Download Slip →</span>
+          </div>
+        </a>
+      `).join('');
+    }
+
+    // Render Column 3: Latest Jobs
+    function renderLatestJobs() {
+      if (!latestJobsList) return;
+      const items = SARKARI_DATA.latestJobs.filter(item => itemMatches(item, activeFilter, searchQuery));
+      document.getElementById('col3-count').textContent = items.length;
+
+      if (items.length === 0) {
+        latestJobsList.innerHTML = `<div class="p-4 text-center text-xs text-slate-500">No jobs found matching criteria.</div>`;
+        return;
+      }
+
+      latestJobsList.innerHTML = items.map(item => `
+        <a href="${item.link}" class="group block p-3 hover:bg-emerald-50/50 transition-colors">
+          <div class="flex items-start justify-between gap-2 mb-1">
+            <span class="inline-block text-[10px] font-bold px-2 py-0.5 rounded-full ${item.badgeColor}">
+              ${item.badge}
+            </span>
+            <span class="inline-flex items-center gap-1 text-[11px] font-extrabold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+              ⏳ ${item.countdown}
+            </span>
+          </div>
+          <p class="text-xs font-bold text-slate-800 group-hover:text-emerald-700 transition-colors leading-snug">
+            ${highlightText(item.title, searchQuery)}
+          </p>
+          <div class="mt-1.5 flex items-center justify-between text-[11px] text-slate-500">
+            <span class="font-semibold text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded">${item.vacancies}</span>
+            <span class="text-slate-500 font-medium">Last: ${item.lastDate}</span>
+          </div>
+        </a>
+      `).join('');
+    }
+
+    // Render Secondary Sections
+    function renderSecondaryGrids() {
+      const q = searchQuery;
+      const f = activeFilter;
+
+      // Answer Keys
+      if (answerKeysList) {
+        const items = SARKARI_DATA.answerKeys.filter(item => itemMatches(item, f, q));
+        answerKeysList.innerHTML = items.length ? items.map(item => `
+          <a href="${item.link}" class="block p-2.5 rounded-xl bg-slate-50 hover:bg-amber-50/60 border border-slate-100 hover:border-amber-200 transition-all group">
+            <div class="flex items-center justify-between text-[10px] font-semibold text-slate-400 mb-1">
+              <span class="px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 font-bold">${item.badge}</span>
+              <span>${item.date}</span>
+            </div>
+            <p class="text-xs font-bold text-slate-800 group-hover:text-amber-800 transition-colors">
+              ${highlightText(item.title, q)}
+            </p>
+          </a>
+        `).join('') : '<p class="text-xs text-slate-400">No answer keys found.</p>';
+      }
+
+      // Syllabus
+      if (syllabusList) {
+        const items = SARKARI_DATA.syllabus.filter(item => itemMatches(item, f, q));
+        syllabusList.innerHTML = items.length ? items.map(item => `
+          <a href="${item.link}" class="block p-2.5 rounded-xl bg-slate-50 hover:bg-purple-50/60 border border-slate-100 hover:border-purple-200 transition-all group">
+            <div class="flex items-center justify-between text-[10px] font-semibold text-slate-400 mb-1">
+              <span class="px-1.5 py-0.5 rounded bg-purple-100 text-purple-800 font-bold">${item.badge}</span>
+              <span>${item.date}</span>
+            </div>
+            <p class="text-xs font-bold text-slate-800 group-hover:text-purple-800 transition-colors">
+              ${highlightText(item.title, q)}
+            </p>
+          </a>
+        `).join('') : '<p class="text-xs text-slate-400">No syllabus found.</p>';
+      }
+
+      // Admissions
+      if (admissionsList) {
+        const items = SARKARI_DATA.admissions.filter(item => itemMatches(item, f, q));
+        admissionsList.innerHTML = items.length ? items.map(item => `
+          <a href="${item.link}" class="block p-2.5 rounded-xl bg-slate-50 hover:bg-teal-50/60 border border-slate-100 hover:border-teal-200 transition-all group">
+            <div class="flex items-center justify-between text-[10px] font-semibold text-slate-400 mb-1">
+              <span class="px-1.5 py-0.5 rounded bg-teal-100 text-teal-800 font-bold">${item.badge}</span>
+              <span>${item.date}</span>
+            </div>
+            <p class="text-xs font-bold text-slate-800 group-hover:text-teal-800 transition-colors">
+              ${highlightText(item.title, q)}
+            </p>
+          </a>
+        `).join('') : '<p class="text-xs text-slate-400">No admissions found.</p>';
+      }
+    }
+
+    // Refresh entire view
+    function updateAllViews() {
+      renderTrending();
+      renderResults();
+      renderAdmitCards();
+      renderLatestJobs();
+      renderSecondaryGrids();
+
+      // Show/Hide filter notice
+      if (activeFilter !== 'All' || searchQuery.trim() !== '') {
+        filterAlertBar.classList.remove('hidden');
+        let msg = `Filtering by: <strong>${activeFilter}</strong>`;
+        if (searchQuery.trim()) {
+          msg += ` &bull; Matching: "<em>${escapeHTML(searchQuery.trim())}</em>"`;
+        }
+        filterAlertText.innerHTML = msg;
+      } else {
+        filterAlertBar.classList.add('hidden');
+      }
+    }
+
+    function escapeHTML(str) {
+      return str.replace(/[&<>'"]/g, 
+        tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+      );
+    }
+
+    // Reset filters
+    function resetAllFilters() {
+      activeFilter = 'All';
+      searchQuery = '';
+      if (globalSearchInput) globalSearchInput.value = '';
+      if (mobileSearchInput) mobileSearchInput.value = '';
+      if (clearSearchBtn) clearSearchBtn.classList.add('hidden');
+
+      filterPills.forEach(p => {
+        if (p.getAttribute('data-filter') === 'All') {
+          p.classList.add('active', 'bg-blue-600', 'text-white', 'shadow-sm');
+          p.classList.remove('bg-slate-100', 'text-slate-700');
+        } else {
+          p.classList.remove('active', 'bg-blue-600', 'text-white', 'shadow-sm');
+          p.classList.add('bg-slate-100', 'text-slate-700');
+        }
+      });
+
+      updateAllViews();
+    }
+
+    // Event Listeners for Filter Pills
+    filterPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        filterPills.forEach(p => {
+          p.classList.remove('active', 'bg-blue-600', 'text-white', 'shadow-sm');
+          p.classList.add('bg-slate-100', 'text-slate-700');
+        });
+        pill.classList.add('active', 'bg-blue-600', 'text-white', 'shadow-sm');
+        pill.classList.remove('bg-slate-100', 'text-slate-700');
+
+        activeFilter = pill.getAttribute('data-filter');
+        updateAllViews();
+      });
+    });
+
+    // Search input handlers
+    function handleSearch(val) {
+      searchQuery = val;
+      if (clearSearchBtn) {
+        if (val.trim()) clearSearchBtn.classList.remove('hidden');
+        else clearSearchBtn.classList.add('hidden');
+      }
+      updateAllViews();
+    }
+
+    if (globalSearchInput) {
+      globalSearchInput.addEventListener('input', (e) => {
+        if (mobileSearchInput) mobileSearchInput.value = e.target.value;
+        handleSearch(e.target.value);
+      });
+    }
+
+    if (mobileSearchInput) {
+      mobileSearchInput.addEventListener('input', (e) => {
+        if (globalSearchInput) globalSearchInput.value = e.target.value;
+        handleSearch(e.target.value);
+      });
+    }
+
+    if (clearSearchBtn) {
+      clearSearchBtn.addEventListener('click', () => {
+        resetAllFilters();
+      });
+    }
+
+    // Keyboard shortcut '/' to focus search
+    window.addEventListener('keydown', (e) => {
+      if (e.key === '/' && document.activeElement !== globalSearchInput && document.activeElement !== mobileSearchInput) {
+        e.preventDefault();
+        if (window.innerWidth >= 768 && globalSearchInput) {
+          globalSearchInput.focus();
+        } else if (mobileSearchInput) {
+          mobileSearchInput.focus();
+        }
+      }
+    });
+
+    // Compute dynamic filter pill badge counters
+    function updatePillCounters() {
+      const allItems = [
+        ...SARKARI_DATA.trending,
+        ...SARKARI_DATA.results,
+        ...SARKARI_DATA.admitCards,
+        ...SARKARI_DATA.latestJobs,
+        ...SARKARI_DATA.answerKeys,
+        ...SARKARI_DATA.syllabus,
+        ...SARKARI_DATA.admissions
+      ];
+
+      const countForFilter = (filter) => allItems.filter(item => itemMatches(item, filter, '')).length;
+
+      const elAll = document.getElementById('count-All');
+      const el10th = document.getElementById('count-10th');
+      const el12th = document.getElementById('count-12th');
+      const elGrad = document.getElementById('count-Grad');
+      const elTech = document.getElementById('count-Tech');
+      const elTeach = document.getElementById('count-Teach');
+      const elDef = document.getElementById('count-Def');
+
+      if (elAll) elAll.textContent = `(${allItems.length})`;
+      if (el10th) el10th.textContent = `(${countForFilter('10th Pass')})`;
+      if (el12th) el12th.textContent = `(${countForFilter('12th Pass')})`;
+      if (elGrad) elGrad.textContent = `(${countForFilter('Graduate')})`;
+      if (elTech) elTech.textContent = `(${countForFilter('B.Tech / Engineering')})`;
+      if (elTeach) elTeach.textContent = `(${countForFilter('Teaching')})`;
+      if (elDef) elDef.textContent = `(${countForFilter('Police / Defense')})`;
+    }
+
+    // Initial render
+    document.addEventListener('DOMContentLoaded', () => {
+      updatePillCounters();
+      updateAllViews();
+    });
+  </script>
+
+</body>
+</html>
