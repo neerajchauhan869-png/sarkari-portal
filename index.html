@@ -33,13 +33,13 @@
   <div class="bg-slate-900 text-slate-200 text-xs py-2 px-4 border-b border-slate-800">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
       <div class="flex items-center gap-2 overflow-hidden w-full sm:w-auto">
-        <span class="bg-rose-600 text-white font-bold px-2 py-0.5 rounded text-[10px] tracking-wide uppercase flex-shrink-0 animate-pulse">● LIVE</span>
+        <span class="bg-rose-600 text-white font-bold px-2 py-0.5 rounded text-[10px] tracking-wide uppercase flex-shrink-0 animate-pulse">● LIVE SYNC</span>
         <div class="truncate text-slate-300 font-medium">
-          SSC CGL 2026 Tentative Vacancies Active • RRB NTPC Exam City Slip Live • UP Police SI Physical Standards Announced
+          Real-Time Sarkari Feed • SSC, Railway RRB, UPSC & Police Deadlines Updated
         </div>
       </div>
       <div class="flex items-center gap-4 text-slate-400 text-[11px] flex-shrink-0">
-        <span>⚡ 0.4s Fast Load</span>
+        <span>⚡ Real-Time Deadlines</span>
         <span>• 100% Free Candidate Utilities</span>
         <button onclick="openModal('ageCalcModal')" class="hover:text-amber-400 transition">📅 Age Calculator</button>
         <button onclick="openModal('photoResizerModal')" class="hover:text-sky-400 transition">🖼️ Photo Resizer</button>
@@ -72,7 +72,7 @@
           <input 
             type="text" 
             id="searchInput"
-            placeholder="Search 5,000+ jobs, results, admit cards (e.g. SSC, Police, 10th Pass, SI)..." 
+            placeholder="Search 5,000+ jobs, deadlines, admit cards (e.g. SSC, Railway, 12th Pass, Police)..." 
             class="w-full bg-slate-50 hover:bg-slate-100/80 focus:bg-white border border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 rounded-xl py-2 pl-10 pr-4 text-sm transition outline-none"
             oninput="handleSearch(this.value)"
           />
@@ -102,25 +102,22 @@
           <i class="fa-solid fa-filter text-[9px]"></i> FILTER:
         </span>
         <button onclick="filterCategory('All')" class="filter-pill active-pill px-3 py-1 rounded-full font-bold bg-indigo-600 text-white transition flex-shrink-0 shadow-sm" data-category="All">
-          All Notifications (<span id="totalBadgeCount">12</span>)
+          All Notifications (<span id="totalBadgeCount">0</span>)
         </button>
         <button onclick="filterCategory('10th Pass')" class="filter-pill px-3 py-1 rounded-full bg-white text-slate-700 hover:bg-slate-200/70 border border-slate-200 transition flex-shrink-0" data-category="10th Pass">
-          10th Pass (0)
+          10th Pass (<span id="count-10th">0</span>)
         </button>
         <button onclick="filterCategory('12th Pass')" class="filter-pill px-3 py-1 rounded-full bg-white text-slate-700 hover:bg-slate-200/70 border border-slate-200 transition flex-shrink-0" data-category="12th Pass">
-          12th Pass (3)
+          12th Pass (<span id="count-12th">0</span>)
         </button>
         <button onclick="filterCategory('Graduate')" class="filter-pill px-3 py-1 rounded-full bg-white text-slate-700 hover:bg-slate-200/70 border border-slate-200 transition flex-shrink-0" data-category="Graduate">
-          Graduate (5)
+          Graduate (<span id="count-grad">0</span>)
         </button>
         <button onclick="filterCategory('B.Tech / Engineering')" class="filter-pill px-3 py-1 rounded-full bg-white text-slate-700 hover:bg-slate-200/70 border border-slate-200 transition flex-shrink-0" data-category="B.Tech / Engineering">
-          B.Tech / Engineering (3)
-        </button>
-        <button onclick="filterCategory('Teaching / B.Ed')" class="filter-pill px-3 py-1 rounded-full bg-white text-slate-700 hover:bg-slate-200/70 border border-slate-200 transition flex-shrink-0" data-category="Teaching / B.Ed">
-          Teaching / B.Ed (0)
+          B.Tech / Engineering (<span id="count-eng">0</span>)
         </button>
         <button onclick="filterCategory('Police / Defense')" class="filter-pill px-3 py-1 rounded-full bg-white text-slate-700 hover:bg-slate-200/70 border border-slate-200 transition flex-shrink-0" data-category="Police / Defense">
-          Police / Defense (2)
+          Police / Defense (<span id="count-police">0</span>)
         </button>
       </div>
     </div>
@@ -135,9 +132,9 @@
         <div class="flex items-center gap-2">
           <div class="w-1.5 h-5 bg-rose-600 rounded-full"></div>
           <h2 class="text-base font-extrabold text-slate-900 tracking-tight">Trending Recruitment Drives</h2>
-          <span class="bg-rose-50 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded-full border border-rose-200">Active Now</span>
+          <span class="bg-rose-50 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded-full border border-rose-200">Active Deadlines</span>
         </div>
-        <p class="text-xs text-slate-500 hidden sm:block">Click any card to launch interactive AI summary</p>
+        <p class="text-xs text-slate-500 hidden sm:block">Sorted by freshest notifications & urgent closing dates</p>
       </div>
 
       <!-- Trending Cards Grid -->
@@ -146,25 +143,6 @@
       </div>
     </section>
 
-    <!-- Sponsored Mock Test Promo Banner -->
-    <div class="border border-slate-200 bg-white rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm hover:border-indigo-200 transition">
-      <div class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-500 border border-amber-200 flex items-center justify-center text-lg flex-shrink-0">
-          ⚡
-        </div>
-        <div>
-          <h3 class="font-bold text-slate-900 text-sm">SSC & Railway 2026 Free Mock Test Series & Live Rank Predictor</h3>
-          <p class="text-xs text-slate-500">Practice 10,000+ bilingual questions with AI accuracy metrics and detailed video solutions.</p>
-        </div>
-      </div>
-      <div class="flex items-center gap-3 w-full sm:w-auto justify-end">
-        <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-widest hidden md:inline">[ADVERTISEMENT SPACE - SPONSORED PARTNER ANNOUNCEMENT]</span>
-        <a href="https://ssc.gov.in" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto text-center bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs px-5 py-2.5 rounded-xl shadow transition">
-          Start Free Test
-        </a>
-      </div>
-    </div>
-
     <!-- Candidate AI Superpowers Feature Banner -->
     <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white rounded-2xl p-6 shadow-xl relative overflow-hidden">
       <div class="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
@@ -172,7 +150,7 @@
           <div class="inline-flex items-center gap-1.5 bg-indigo-500/20 text-indigo-300 text-[11px] font-bold px-3 py-1 rounded-full border border-indigo-500/30 mb-2">
             ✨ Candidate AI Superpowers
           </div>
-          <h2 class="text-xl sm:text-2xl font-black tracking-tight">Stop Wasting Hours on 60-Page PDF Gazettes</h2>
+          <h2 class="text-xl sm:text-2xl font-black tracking-tight">Never Miss an Application Deadline</h2>
           <p class="text-xs sm:text-sm text-slate-300 max-w-2xl mt-1">
             Check age eligibility down to the exact day, resize your photos to strict 20KB-50KB specs, and read condensed exam blueprints in 60 seconds.
           </p>
@@ -201,9 +179,9 @@
             <span class="text-base">🏆</span>
             <h3 class="font-extrabold text-sm tracking-wide">Latest Results</h3>
           </div>
-          <span id="resultsCountBadge" class="bg-white/20 text-white text-xs font-bold px-2 py-0.5 rounded-full">2</span>
+          <span id="resultsCountBadge" class="bg-white/20 text-white text-xs font-bold px-2 py-0.5 rounded-full">0</span>
         </div>
-        <div class="p-3 divide-y divide-slate-100 flex-1" id="resultsContainer">
+        <div class="p-3.5 space-y-2.5 flex-1" id="resultsContainer">
           <!-- Injected via JS -->
         </div>
       </div>
@@ -215,9 +193,9 @@
             <span class="text-base">🎫</span>
             <h3 class="font-extrabold text-sm tracking-wide">Admit Card</h3>
           </div>
-          <span id="admitCountBadge" class="bg-white/20 text-white text-xs font-bold px-2 py-0.5 rounded-full">2</span>
+          <span id="admitCountBadge" class="bg-white/20 text-white text-xs font-bold px-2 py-0.5 rounded-full">0</span>
         </div>
-        <div class="p-3 divide-y divide-slate-100 flex-1" id="admitCardsContainer">
+        <div class="p-3.5 space-y-2.5 flex-1" id="admitCardsContainer">
           <!-- Injected via JS -->
         </div>
       </div>
@@ -229,9 +207,9 @@
             <span class="text-base">💼</span>
             <h3 class="font-extrabold text-sm tracking-wide">Latest Jobs</h3>
           </div>
-          <span id="jobsCountBadge" class="bg-white/20 text-white text-xs font-bold px-2 py-0.5 rounded-full">3</span>
+          <span id="jobsCountBadge" class="bg-white/20 text-white text-xs font-bold px-2 py-0.5 rounded-full">0</span>
         </div>
-        <div class="p-3 divide-y divide-slate-100 flex-1" id="latestJobsContainer">
+        <div class="p-3.5 space-y-2.5 flex-1" id="latestJobsContainer">
           <!-- Injected via JS -->
         </div>
       </div>
@@ -248,7 +226,7 @@
             <span>🔑</span> Tentative Answer Keys
           </h4>
         </div>
-        <div class="space-y-2 text-xs" id="answerKeysContainer"></div>
+        <div class="space-y-2.5 text-xs" id="answerKeysContainer"></div>
       </div>
 
       <!-- Syllabus -->
@@ -258,7 +236,7 @@
             <span>📘</span> Official Exam Syllabus
           </h4>
         </div>
-        <div class="space-y-2 text-xs" id="syllabusContainer"></div>
+        <div class="space-y-2.5 text-xs" id="syllabusContainer"></div>
       </div>
 
       <!-- Admissions -->
@@ -268,7 +246,7 @@
             <span>🎓</span> Admissions & Counselling
           </h4>
         </div>
-        <div class="space-y-2 text-xs" id="admissionsContainer"></div>
+        <div class="space-y-2.5 text-xs" id="admissionsContainer"></div>
       </div>
 
     </div>
@@ -354,159 +332,208 @@
 
   <!-- Main Portal Controller Logic -->
   <script>
-    // 1. Fallback dataset if data.js is temporarily empty
     const DEFAULT_DATA = {
       trending: [
         {
-          id: "ssc-cgl-2026",
-          title: "SSC CGL 2026 Combined Graduate Level Examination Online Form",
-          organization: "Staff Selection Commission (SSC)",
+          id: "rrb-ntpc-grad-2026",
+          title: "RRB NTPC Graduate Level Recruitment (3,477 Posts)",
+          organization: "Railway Recruitment Board",
           category: "Graduate",
           qualification: "Bachelor Degree in Any Stream",
-          totalPosts: "14,582 Posts",
-          lastDate: "28 Oct 2026",
-          url: "https://ssc.gov.in"
+          totalPosts: "3,477 Posts",
+          lastDate: "20/10/2026",
+          deadlineLabel: "Last Date: 20 Oct 2026",
+          timeBadge: "Just Now",
+          isNew: true,
+          url: "https://rrbapply.gov.in"
         },
         {
-          id: "ssc-chsl-2026",
-          title: "SSC CHSL (10+2) Recruitment Online Form 2026",
-          organization: "Staff Selection Commission (SSC)",
-          category: "12th Pass",
-          qualification: "10+2 Intermediate Exam",
-          totalPosts: "3,712 Posts",
-          lastDate: "05 Nov 2026",
-          url: "https://ssc.gov.in"
+          id: "gujarat-police-2026",
+          title: "Gujarat Police Lokrakshak Cadre Recruitment (3,000 Posts)",
+          organization: "State Police",
+          category: "Police / Defense",
+          qualification: "12th Pass / Intermediate",
+          totalPosts: "3,000 Posts",
+          lastDate: "30/10/2026",
+          deadlineLabel: "Last Date: 30 Oct 2026",
+          timeBadge: "15m ago",
+          isNew: true,
+          url: "https://ojas.gujarat.gov.in"
         }
       ],
       latestJobs: [
         {
-          id: "ssc-je-2026",
-          title: "SSC Junior Engineer (Civil, Mechanical, Electrical) Recruitment",
+          id: "rrb-ntpc-ug-2026",
+          title: "RRB NTPC 10+2 Undergraduate Posts Recruitment (1,688 Posts)",
+          organization: "Railway Recruitment Board",
+          category: "12th Pass",
+          totalPosts: "1,688 Posts",
+          lastDate: "27/10/2026",
+          deadlineLabel: "Last Date: 27 Oct 2026",
+          timeBadge: "35m ago",
+          isNew: true,
+          url: "https://rrbapply.gov.in"
+        },
+        {
+          id: "ssc-cgl-2026",
+          title: "SSC Combined Graduate Level (CGL) Examination 2026",
           organization: "SSC",
-          category: "B.Tech / Engineering",
-          totalPosts: "1,748 Posts",
-          lastDate: "22 Oct 2026",
+          category: "Graduate",
+          totalPosts: "14,582 Posts",
+          lastDate: "15/11/2026",
+          deadlineLabel: "Last Date: 15 Nov 2026",
+          timeBadge: "1h ago",
+          isNew: false,
           url: "https://ssc.gov.in"
         }
       ],
       admitCards: [
         {
-          id: "delhi-police-pe-mt",
-          title: "SSC Delhi Police Constable (Executive) PE & MT Admit Card 2026",
-          organization: "SSC",
-          category: "Police / Defense",
+          id: "rrb-slip-2026",
+          title: "RRB NTPC Undergraduate City Slip & Admit Card",
+          organization: "RRB",
+          category: "12th Pass",
           status: "Released",
-          url: "https://ssc.gov.in"
+          deadlineLabel: "Exam Date: Oct 2026",
+          timeBadge: "25m ago",
+          isNew: true,
+          url: "https://rrbapply.gov.in"
         },
         {
-          id: "upsc-nda-ii-2026",
-          title: "UPSC NDA II Admit Card 2026 Available for Download",
-          organization: "UPSC",
+          id: "guj-police-call-letter",
+          title: "Gujarat Police Lokrakshak Physical Call Letter",
+          organization: "State Police",
           category: "Police / Defense",
           status: "Released",
-          url: "https://upsc.gov.in"
+          deadlineLabel: "PST Date: Oct 2026",
+          timeBadge: "2h ago",
+          isNew: false,
+          url: "https://ojas.gujarat.gov.in"
         }
       ],
       results: [
         {
-          id: "afcat-02-2026",
-          title: "AFCAT 02/2026 Result & Cutoff Marks Declared",
-          organization: "Indian Air Force",
-          category: "Graduate",
+          id: "rrb-alp-stage1",
+          title: "Railway RRB ALP Stage 1 Scorecard & Cutoff",
+          organization: "RRB",
+          category: "10th Pass",
           status: "Declared",
-          url: "https://careerindianairforce.cdac.in"
+          deadlineLabel: "Declared: Yesterday",
+          timeBadge: "1h ago",
+          isNew: true,
+          url: "https://rrbapply.gov.in"
         },
         {
-          id: "ssc-je-final-2026",
-          title: "SSC JE Final Result & Cutoff Marks 2026 Announced",
+          id: "ssc-cgl-tier1-res",
+          title: "SSC CGL Tier 1 Scorecard & Category-wise Cutoff",
           organization: "SSC",
-          category: "B.Tech / Engineering",
+          category: "Graduate",
           status: "Declared",
+          deadlineLabel: "Declared: 25 Sep",
+          timeBadge: "3h ago",
+          isNew: false,
           url: "https://ssc.gov.in"
         }
       ],
       answerKeys: [
-        { title: "SSC Stenographer Grade C & D Tentative Answer Key 2026", url: "https://ssc.gov.in" }
+        { title: "SSC Stenographer Grade C & D Tentative Key 2026", actionUrl: "https://ssc.gov.in", category: "12th Pass", timeBadge: "2h ago", deadlineLabel: "Objection till 02 Oct" },
+        { title: "RRB NTPC CEN 07/2025 Answer Key 2026", actionUrl: "https://rrbapply.gov.in", category: "12th Pass", timeBadge: "5h ago", deadlineLabel: "Objection till 05 Oct" }
       ],
       syllabus: [
-        { title: "RRB Junior Engineer Exam 2026 Syllabus & Exam Pattern PDF", url: "https://rrbapply.gov.in" }
+        { title: "UP Police Sub-Inspector (SI) Exam Pattern 2026", actionUrl: "https://uppbpb.gov.in", category: "Police / Defense", timeBadge: "1d ago", deadlineLabel: "Official Syllabus" },
+        { title: "RRB NTPC Graduate & UG Exam Syllabus 2026", actionUrl: "https://rrbapply.gov.in", category: "Graduate", timeBadge: "2d ago", deadlineLabel: "CBT Scheme" }
       ],
       admissions: [
-        { title: "NTA NEET UG 2026 Counselling Schedule & Registration", url: "https://neet.nta.nic.in" }
+        { title: "MCC NEET UG Counselling Round Registration", actionUrl: "https://mcc.nic.in", category: "Graduate", timeBadge: "Today", deadlineLabel: "Last Date: 08 Oct" },
+        { title: "NTA CUET PG Admission Schedule 2026", actionUrl: "https://cuet.nta.nic.in", category: "Graduate", timeBadge: "Yesterday", deadlineLabel: "Active Registration" }
       ]
     };
 
-    // 2. Resolve data source safely
-    const portalData = (typeof window.SARKARI_DATA === 'object' && window.SARKARI_DATA !== null)
+    // Safe Data Resolution
+    const rawPortalData = (typeof window.SARKARI_DATA === 'object' && window.SARKARI_DATA !== null)
       ? window.SARKARI_DATA
       : DEFAULT_DATA;
 
-    // Helper: Safe URL resolver to prevent `/undefined` redirects
+    const portalData = {
+      trending: (rawPortalData.trending && rawPortalData.trending.length > 0) ? rawPortalData.trending : DEFAULT_DATA.trending,
+      latestJobs: (rawPortalData.latestJobs && rawPortalData.latestJobs.length > 0) ? rawPortalData.latestJobs : DEFAULT_DATA.latestJobs,
+      admitCards: (rawPortalData.admitCards && rawPortalData.admitCards.length > 0) ? rawPortalData.admitCards : DEFAULT_DATA.admitCards,
+      results: (rawPortalData.results && rawPortalData.results.length > 0) ? rawPortalData.results : DEFAULT_DATA.results,
+      answerKeys: rawPortalData.answerKeys || DEFAULT_DATA.answerKeys,
+      syllabus: rawPortalData.syllabus || DEFAULT_DATA.syllabus,
+      admissions: rawPortalData.admissions || DEFAULT_DATA.admissions
+    };
+
     function getSafeUrl(item) {
       if (!item) return "https://ssc.gov.in";
       return item.links?.actionUrl || item.actionUrl || item.url || item.link || "https://ssc.gov.in";
     }
 
-    // Helper: Safe Category/Tag resolver to prevent `UNDEFINED` text
     function getSafeCategory(item) {
-      if (!item) return "Govt Exam";
-      const cat = item.category || item.tag || item.section || "Active Drive";
-      return cat.toLowerCase() === "undefined" ? "Govt Exam" : cat;
+      if (!item) return "Graduate";
+      const cat = item.category || item.tag || item.section || "Graduate";
+      return cat.toLowerCase() === "undefined" ? "Graduate" : cat;
     }
 
-    // Helper: Safe Post Count resolver
     function getSafePosts(item) {
-      if (!item) return "Refer Notice";
+      if (!item) return "Check Notice";
       const val = item.totalPosts || item.posts || item.vacancies;
-      return (!val || val.toLowerCase() === "undefined") ? "Refer Official Notice" : val;
+      return (!val || val.toLowerCase() === "undefined") ? "Check Notice" : val;
     }
 
-    // Helper: Safe Date resolver
-    function getSafeDate(item) {
-      if (!item) return "Active";
-      const val = item.lastDate || item.date || item.deadline;
-      return (!val || val.toLowerCase() === "undefined") ? "Active Now" : val;
+    function getSafeDeadline(item, defaultPrefix) {
+      if (item.deadlineLabel && item.deadlineLabel !== "null") return item.deadlineLabel;
+      const date = item.lastDate || item.date || item.status || "Active Now";
+      return `${defaultPrefix}: ${date}`;
     }
 
-    // 3. Render Trending Drives
+    // 1. Render Top Trending Grid
     function renderTrending() {
       const container = document.getElementById("trendingGrid");
       if (!container) return;
 
-      const items = (portalData.trending && portalData.trending.length > 0)
-        ? portalData.trending
-        : (portalData.latestJobs || DEFAULT_DATA.trending);
-
-      container.innerHTML = items.slice(0, 4).map(item => {
+      container.innerHTML = portalData.trending.slice(0, 4).map(item => {
         const link = getSafeUrl(item);
         const category = getSafeCategory(item);
         const posts = getSafePosts(item);
-        const date = getSafeDate(item);
+        const deadline = getSafeDeadline(item, "Last Date");
 
         return `
-          <div class="bg-white border border-slate-200 hover:border-indigo-300 rounded-2xl p-4 shadow-sm hover:shadow-md transition flex flex-col justify-between group">
+          <div class="bg-white border border-slate-200 hover:border-indigo-400 rounded-2xl p-4 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between group">
             <div>
               <div class="flex items-center justify-between gap-2 mb-2">
-                <span class="bg-emerald-50 text-emerald-700 border border-emerald-200 text-[11px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
-                  ${category}
-                </span>
-                <span class="text-[11px] text-slate-400 font-medium">${item.organization || 'Govt of India'}</span>
+                <div class="flex items-center gap-1.5">
+                  <span class="bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
+                    ${category}
+                  </span>
+                  ${item.isNew ? `
+                    <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full text-[9px] font-extrabold bg-rose-50 text-rose-600 border border-rose-200">
+                      <span class="w-1.5 h-1.5 rounded-full bg-rose-500 animate-pulse"></span>
+                      NEW
+                    </span>
+                  ` : ''}
+                </div>
+                <span class="text-[11px] text-slate-400 font-semibold">${item.organization || 'Govt Board'}</span>
               </div>
               <h3 class="font-bold text-slate-900 group-hover:text-indigo-600 transition text-sm leading-snug line-clamp-2">
                 ${item.title || 'Official Recruitment Notice 2026'}
               </h3>
               <p class="text-xs text-slate-500 mt-1 line-clamp-1">
-                ${item.qualification || 'Eligible candidates refer to official notification'}
+                ${item.qualification || 'Click details to inspect qualification & eligibility criteria'}
               </p>
             </div>
             
             <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-              <span class="text-slate-600 font-semibold flex items-center gap-1">
+              <span class="text-slate-600 font-bold flex items-center gap-1">
                 🎯 ${posts}
               </span>
               <div class="flex items-center gap-2">
-                <span class="text-slate-400 text-[11px]">Ends: ${date}</span>
-                <a href="${link}" target="_blank" rel="noopener noreferrer" class="bg-slate-900 group-hover:bg-indigo-600 text-white font-bold text-xs px-3 py-1.5 rounded-lg transition">
+                <!-- Deadline Pill -->
+                <span class="inline-flex items-center gap-1 px-2 py-1 rounded-md text-[11px] font-bold bg-amber-50 text-amber-800 border border-amber-200">
+                  <i class="fa-regular fa-clock text-amber-600 text-[10px]"></i>
+                  ${deadline}
+                </span>
+                <a href="${link}" target="_blank" rel="noopener noreferrer" class="bg-slate-900 group-hover:bg-indigo-600 text-white font-bold text-xs px-3 py-1.5 rounded-lg transition shadow-sm">
                   Apply Online →
                 </a>
               </div>
@@ -516,66 +543,143 @@
       }).join('');
     }
 
-    // 4. Generic List Item Renderer
-    function renderListItems(containerId, items, badgeColorClass, defaultLabel) {
+    // 2. High-Grade Interactive Feed Card Renderer
+    function renderFeedColumn(containerId, items, defaultDeadlinePrefix, btnLabel) {
       const container = document.getElementById(containerId);
       if (!container) return;
 
       if (!items || items.length === 0) {
-        container.innerHTML = `<p class="text-xs text-slate-400 py-3 text-center">No current notifications.</p>`;
+        container.innerHTML = `<p class="text-xs text-slate-400 py-4 text-center">No current notifications.</p>`;
         return;
       }
 
       container.innerHTML = items.map(item => {
         const link = getSafeUrl(item);
-        const tag = getSafeCategory(item);
+        const category = getSafeCategory(item);
+        const deadline = getSafeDeadline(item, defaultDeadlinePrefix);
+        const timeAgo = item.timeBadge || "Active";
 
         return `
-          <div class="py-2.5 first:pt-1 last:pb-1">
-            <a href="${link}" target="_blank" rel="noopener noreferrer" class="font-semibold text-slate-800 hover:text-indigo-600 text-xs leading-snug block transition">
-              ${item.title}
-            </a>
-            <div class="flex items-center gap-2 mt-1">
-              <span class="${badgeColorClass} text-[10px] font-bold px-1.5 py-0.2 rounded">
-                ${tag}
-              </span>
-              <span class="text-[11px] text-slate-400">
-                ${item.status || item.lastDate || defaultLabel}
+          <a href="${link}" target="_blank" rel="noopener noreferrer" 
+             class="group relative flex flex-col p-3 bg-white hover:bg-slate-50 border border-slate-200/90 hover:border-indigo-400 rounded-xl transition-all duration-200 shadow-sm hover:shadow-md">
+            
+            <!-- Top Row: Freshness badge & Organization -->
+            <div class="flex items-center justify-between gap-2 mb-1.5">
+              <div class="flex items-center gap-1.5">
+                ${item.isNew ? `
+                  <span class="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full text-[9px] font-extrabold bg-emerald-50 text-emerald-600 border border-emerald-200">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    NEW
+                  </span>
+                ` : ''}
+                <span class="text-[11px] font-semibold text-slate-500 uppercase tracking-wider truncate max-w-[150px]">
+                  ${item.organization || item.org || 'Govt Board'}
+                </span>
+              </div>
+              
+              <!-- Time Ago -->
+              <span class="text-[11px] font-medium text-slate-400 group-hover:text-indigo-600 transition-colors flex items-center gap-1">
+                <i class="fa-regular fa-clock text-[10px]"></i>
+                ${timeAgo}
               </span>
             </div>
-          </div>
+
+            <!-- Title -->
+            <h4 class="text-[12.5px] font-bold text-slate-900 group-hover:text-indigo-600 leading-snug line-clamp-2 transition-colors mb-2">
+              ${item.title}
+            </h4>
+
+            <!-- Bottom Row: Category & DEADLINE BADGE -->
+            <div class="flex items-center justify-between pt-2 border-t border-slate-100 text-[11px]">
+              <span class="px-2 py-0.5 rounded font-semibold text-slate-600 bg-slate-100">
+                ${category}
+              </span>
+              
+              <!-- Prominent Last Date / Exam Date Indicator -->
+              <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md font-bold bg-amber-50 text-amber-800 border border-amber-200">
+                ${deadline}
+              </span>
+            </div>
+          </a>
         `;
       }).join('');
     }
 
-    // 5. Render All Sections
+    // 3. Render Secondary Mini Hub
+    function renderMiniHub(containerId, items) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+
+      container.innerHTML = (items || []).map(item => {
+        const link = getSafeUrl(item);
+        const timeAgo = item.timeBadge || "Active";
+        const deadline = item.deadlineLabel || "Available";
+
+        return `
+          <a href="${link}" target="_blank" rel="noopener noreferrer" class="block p-2.5 bg-slate-50 hover:bg-white border border-slate-200/70 hover:border-indigo-300 rounded-lg transition group">
+            <div class="flex items-center justify-between text-[10px] text-slate-400 font-semibold mb-1">
+              <span class="text-indigo-600 font-bold">${item.category || 'Official'}</span>
+              <span>${timeAgo}</span>
+            </div>
+            <div class="font-bold text-slate-800 group-hover:text-indigo-600 transition line-clamp-1">
+              ${item.title}
+            </div>
+            <div class="text-[10px] text-amber-700 font-bold mt-1">
+              ${deadline}
+            </div>
+          </a>
+        `;
+      }).join('');
+    }
+
+    // 4. Update Header Pill Counts
+    function updateCategoryCounts() {
+      const allItems = [
+        ...portalData.trending,
+        ...portalData.latestJobs,
+        ...portalData.admitCards,
+        ...portalData.results
+      ];
+
+      const countFor = (cat) => allItems.filter(i => (i.category || '').toLowerCase().includes(cat.toLowerCase())).length;
+
+      document.getElementById("totalBadgeCount").innerText = allItems.length;
+      if (document.getElementById("count-10th")) document.getElementById("count-10th").innerText = countFor("10th");
+      if (document.getElementById("count-12th")) document.getElementById("count-12th").innerText = countFor("12th");
+      if (document.getElementById("count-grad")) document.getElementById("count-grad").innerText = countFor("Graduate");
+      if (document.getElementById("count-eng")) document.getElementById("count-eng").innerText = countFor("Engineering") + countFor("B.Tech");
+      if (document.getElementById("count-police")) document.getElementById("count-police").innerText = countFor("Police") + countFor("Defense");
+    }
+
+    // 5. Master Render Function
     function renderAll() {
       renderTrending();
-      renderListItems("resultsContainer", portalData.results || [], "bg-rose-100 text-rose-800", "Declared");
-      renderListItems("admitCardsContainer", portalData.admitCards || [], "bg-blue-100 text-blue-800", "Available");
-      renderListItems("latestJobsContainer", portalData.latestJobs || [], "bg-emerald-100 text-emerald-800", "Active Form");
+      renderFeedColumn("resultsContainer", portalData.results, "Declared", "Check Result");
+      renderFeedColumn("admitCardsContainer", portalData.admitCards, "Exam Date", "Admit Card");
+      renderFeedColumn("latestJobsContainer", portalData.latestJobs, "Last Date", "Apply Online");
       
-      // Bottom mini sections
-      renderListItems("answerKeysContainer", portalData.answerKeys || [], "bg-amber-100 text-amber-800", "Released");
-      renderListItems("syllabusContainer", portalData.syllabus || [], "bg-purple-100 text-purple-800", "PDF Available");
-      renderListItems("admissionsContainer", portalData.admissions || [], "bg-teal-100 text-teal-800", "Open");
+      renderMiniHub("answerKeysContainer", portalData.answerKeys);
+      renderMiniHub("syllabusContainer", portalData.syllabus);
+      renderMiniHub("admissionsContainer", portalData.admissions);
 
-      // Badge Counts
+      // Section Badges
       if (document.getElementById("resultsCountBadge")) {
-        document.getElementById("resultsCountBadge").innerText = portalData.results?.length || 2;
+        document.getElementById("resultsCountBadge").innerText = portalData.results?.length || 0;
       }
       if (document.getElementById("admitCountBadge")) {
-        document.getElementById("admitCountBadge").innerText = portalData.admitCards?.length || 2;
+        document.getElementById("admitCountBadge").innerText = portalData.admitCards?.length || 0;
       }
       if (document.getElementById("jobsCountBadge")) {
-        document.getElementById("jobsCountBadge").innerText = portalData.latestJobs?.length || 3;
+        document.getElementById("jobsCountBadge").innerText = portalData.latestJobs?.length || 0;
       }
+
+      updateCategoryCounts();
     }
 
     // 6. Search Functionality
     function handleSearch(query) {
       const q = query.toLowerCase().trim();
-      const allCards = document.querySelectorAll("#trendingGrid > div, #resultsContainer > div, #admitCardsContainer > div, #latestJobsContainer > div");
+      const allCards = document.querySelectorAll("#trendingGrid > div, #resultsContainer > a, #admitCardsContainer > a, #latestJobsContainer > a");
       allCards.forEach(card => {
         const text = card.innerText.toLowerCase();
         card.style.display = text.includes(q) ? "" : "none";
@@ -649,12 +753,12 @@
       res.innerHTML = `
         <div class="font-bold text-slate-900">Your Age on ${cutoffVal}:</div>
         <div class="text-indigo-600 font-extrabold text-sm mt-0.5">${years} Years, ${months} Months, ${days} Days</div>
-        <p class="text-slate-500 text-[11px] mt-1">General SSC Range: Typically 18 to 30 years (Check your specific post code notification for age relaxations).</p>
+        <p class="text-slate-500 text-[11px] mt-1">General Sarkari Window: Typically 18 to 30 years (Check your specific notification for category relaxations).</p>
       `;
       res.classList.remove("hidden");
     }
 
-    // 10. Candidate Photo Resizer (Pure Client-Side Canvas)
+    // 10. Photo Resizer (Client-Side Canvas)
     function compressCandidatePhoto() {
       const fileInput = document.getElementById("photoInput");
       const res = document.getElementById("compressResult");
@@ -672,13 +776,11 @@
         const img = new Image();
         img.onload = function() {
           const canvas = document.createElement("canvas");
-          // Standard SSC spec: 3.5cm x 4.5cm (~140px x 180px or 350px x 450px)
           canvas.width = 350;
           canvas.height = 450;
           const ctx = canvas.getContext("2d");
           ctx.drawImage(img, 0, 0, 350, 450);
 
-          // Compress to ~35KB JPEG
           const dataUrl = canvas.toDataURL("image/jpeg", 0.75);
           res.innerHTML = `
             <div class="text-emerald-700 font-bold mb-2">✅ Image Resized to Govt Specifications (350x450, ~35 KB)</div>
@@ -695,7 +797,6 @@
       reader.readAsDataURL(file);
     }
 
-    // Initialize on DOM load
     document.addEventListener("DOMContentLoaded", renderAll);
   </script>
 </body>
