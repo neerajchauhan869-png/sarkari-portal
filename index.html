@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
   <title>SarkariAI V2.0 - Next-Gen Sarkari Alert & Utility Hub</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -25,7 +28,7 @@
   </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <!-- Data Script -->
-  <script src="data.js"></script>
+  <script src="data.js?t=20260928"></script>
 </head>
 <body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col font-sans">
 
@@ -35,12 +38,12 @@
       <div class="flex items-center gap-2 overflow-hidden w-full sm:w-auto">
         <span class="bg-rose-600 text-white font-bold px-2 py-0.5 rounded text-[10px] tracking-wide uppercase flex-shrink-0 animate-pulse">● LIVE SYNC</span>
         <div class="truncate text-slate-300 font-medium">
-          Real-Time Sarkari Feed • SSC, Railway RRB, UPSC & Police Deadlines Updated
+          Official Direct Government Portal Feeds • Verified Commissions & Deadlines
         </div>
       </div>
       <div class="flex items-center gap-4 text-slate-400 text-[11px] flex-shrink-0">
         <span>⚡ Real-Time Deadlines</span>
-        <span>• 100% Free Candidate Utilities</span>
+        <span>• 100% Direct Official Links</span>
         <button onclick="openModal('ageCalcModal')" class="hover:text-amber-400 transition">📅 Age Calculator</button>
         <button onclick="openModal('photoResizerModal')" class="hover:text-sky-400 transition">🖼️ Photo Resizer</button>
       </div>
@@ -61,7 +64,7 @@
             <span class="font-extrabold text-xl tracking-tight text-slate-900">Sarkari<span class="text-indigo-600">AI</span></span>
             <span class="bg-indigo-100 text-indigo-700 text-[10px] font-bold px-1.5 py-0.5 rounded border border-indigo-200">V2.0</span>
           </div>
-          <p class="text-[10px] text-slate-500 font-semibold tracking-wider uppercase">Next-Gen Sarkari Alert & Utility Hub</p>
+          <p class="text-[10px] text-slate-500 font-semibold tracking-wider uppercase">Official Alert & Utility Hub</p>
         </div>
       </a>
 
@@ -84,12 +87,12 @@
         <a href="https://t.me" target="_blank" rel="noopener noreferrer" class="bg-sky-500 hover:bg-sky-600 text-white px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm transition">
           <i class="fa-brands fa-telegram text-sm"></i>
           <span>Telegram</span>
-          <span class="bg-sky-600/60 text-[10px] px-1 py-0.2 rounded font-normal">1.4M</span>
+          <span class="bg-sky-600/60 text-[10px] px-1 py-0.2 rounded font-normal">Join</span>
         </a>
         <a href="https://whatsapp.com" target="_blank" rel="noopener noreferrer" class="bg-emerald-600 hover:bg-emerald-700 text-white px-3.5 py-2 rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-sm transition">
           <i class="fa-brands fa-whatsapp text-sm"></i>
           <span>WhatsApp</span>
-          <span class="bg-emerald-700/60 text-[10px] px-1 py-0.2 rounded font-normal">950K</span>
+          <span class="bg-emerald-700/60 text-[10px] px-1 py-0.2 rounded font-normal">Alerts</span>
         </a>
       </div>
 
@@ -134,7 +137,7 @@
           <h2 class="text-base font-extrabold text-slate-900 tracking-tight">Trending Recruitment Drives</h2>
           <span class="bg-rose-50 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded-full border border-rose-200">Active Deadlines</span>
         </div>
-        <p class="text-xs text-slate-500 hidden sm:block">Sorted by freshest notifications & urgent closing dates</p>
+        <p class="text-xs text-slate-500 hidden sm:block">Click any card to view official details & deadlines</p>
       </div>
 
       <!-- Trending Cards Grid -->
@@ -152,7 +155,7 @@
           </div>
           <h2 class="text-xl sm:text-2xl font-black tracking-tight">Never Miss an Application Deadline</h2>
           <p class="text-xs sm:text-sm text-slate-300 max-w-2xl mt-1">
-            Check age eligibility down to the exact day, resize your photos to strict 20KB-50KB specs, and read condensed exam blueprints in 60 seconds.
+            Check age eligibility down to the exact day, resize your photos to strict 20KB-50KB specs, and get direct official application links without spam.
           </p>
         </div>
         <div class="flex flex-wrap items-center gap-2.5 flex-shrink-0">
@@ -216,7 +219,7 @@
 
     </div>
 
-    <!-- Additional Multi-Section Row (Answer Key, Syllabus, Admission) -->
+    <!-- Additional Multi-Section Row -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
       
       <!-- Answer Keys -->
@@ -253,16 +256,57 @@
 
   </main>
 
-  <!-- Footer -->
-  <footer class="bg-white border-t border-slate-200 mt-12 py-8 text-xs text-slate-500">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="flex items-center gap-2">
-        <span class="font-extrabold text-slate-800">SarkariAI V2.0</span>
-        <span>• Automated Sarkari Recruitment & Advisory Engine</span>
+  <!-- High-RPM Job Details & Monetization Modal -->
+  <div id="jobDetailModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
+    <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+      <button onclick="closeModal('jobDetailModal')" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 font-bold text-lg">✕</button>
+      
+      <!-- Candidate Monetization & Affiliate Box -->
+      <div class="w-full bg-amber-50 border border-amber-200 rounded-xl p-3 text-center mb-4">
+        <span class="text-[10px] uppercase font-bold text-amber-600 tracking-wider">Candidate Offer</span>
+        <div class="text-xs font-bold text-slate-800 mt-0.5">📚 Free 2026 Mock Test Series & Live Rank Predictor</div>
+        <a href="https://ssc.gov.in" target="_blank" class="inline-block mt-2 bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold text-[11px] px-3 py-1 rounded-lg transition shadow-sm">
+          Claim Free Pass →
+        </a>
       </div>
-      <p>© 2026 SarkariAI Portal. Direct Government Portal Redirection Engine.</p>
+
+      <!-- Job Info -->
+      <div class="flex items-center gap-2 mb-2">
+        <span id="modalCategory" class="px-2 py-0.5 rounded text-[10px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-200 uppercase"></span>
+        <span id="modalOrg" class="text-xs font-semibold text-slate-500"></span>
+      </div>
+
+      <h3 id="modalTitle" class="text-base font-extrabold text-slate-900 leading-snug mb-3"></h3>
+
+      <!-- Vacancy & Deadline Details -->
+      <div class="grid grid-cols-2 gap-2.5 p-3 rounded-xl bg-slate-50 border border-slate-100 text-xs mb-4">
+        <div>
+          <span class="text-slate-400 block text-[10px] uppercase font-bold">Total Posts</span>
+          <span id="modalPosts" class="font-bold text-slate-800"></span>
+        </div>
+        <div>
+          <span class="text-slate-400 block text-[10px] uppercase font-bold">Important Date</span>
+          <span id="modalDeadline" class="font-bold text-rose-600"></span>
+        </div>
+      </div>
+
+      <!-- Telegram / WhatsApp Retention CTA -->
+      <div class="p-3 bg-gradient-to-r from-sky-50 to-indigo-50 border border-sky-200 rounded-xl mb-4 flex items-center justify-between">
+        <div>
+          <p class="text-xs font-bold text-slate-800">🔔 Instant Exam Alerts</p>
+          <p class="text-[11px] text-slate-500">Get admit card drops on Telegram.</p>
+        </div>
+        <a href="https://t.me" target="_blank" class="bg-sky-500 hover:bg-sky-600 text-white font-bold text-xs px-3 py-1.5 rounded-lg shadow-sm transition">
+          Join Channel
+        </a>
+      </div>
+
+      <!-- Direct Official Link -->
+      <a id="modalOfficialLink" href="#" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs py-2.5 rounded-xl shadow transition">
+        Continue to Official Govt Portal →
+      </a>
     </div>
-  </footer>
+  </div>
 
   <!-- Age Calculator Modal -->
   <div id="ageCalcModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center z-50 p-4">
@@ -318,188 +362,96 @@
       <h3 class="text-base font-extrabold text-slate-900 mb-2 flex items-center gap-2">
         <span>✨</span> 60-Second AI Exam Brief
       </h3>
-      <div id="briefContent" class="space-y-3 text-xs text-slate-600">
-        <p class="font-semibold text-slate-800">Staff Selection Commission (SSC CGL 2026)</p>
+      <div class="space-y-3 text-xs text-slate-600">
+        <p class="font-semibold text-slate-800">Recruitment Blueprint & Stage Analysis</p>
         <ul class="list-disc pl-4 space-y-1">
-          <li><strong>Age Limit:</strong> 18–30 years (with standard category relaxation).</li>
-          <li><strong>Eligibility:</strong> Graduation Degree in any discipline from a recognized university.</li>
-          <li><strong>Selection Stages:</strong> Tier-1 (Computer Based Test), Tier-2 (Subjective + Data Entry Skill Test).</li>
-          <li><strong>Key Notice:</strong> Normalization applicable across multi-shift computer tests.</li>
+          <li><strong>Age Limit:</strong> Standard category relaxations apply (OBC +3 yrs, SC/ST +5 yrs).</li>
+          <li><strong>Documents:</strong> Scanned photo (20-50KB), signature (10-20KB), valid Photo ID.</li>
+          <li><strong>Exam Pattern:</strong> Tier-1 CBT objective test followed by skill test or physical test.</li>
         </ul>
       </div>
     </div>
   </div>
 
-  <!-- Main Portal Controller Logic -->
+  <!-- Footer -->
+  <footer class="bg-white border-t border-slate-200 mt-12 py-8 text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <span class="font-extrabold text-slate-800">SarkariAI V2.0</span>
+        <span>• Direct Government Portal Verification Engine</span>
+      </div>
+      <p>© 2026 SarkariAI Portal. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Main Controller Logic -->
   <script>
     const DEFAULT_DATA = {
-      trending: [
-        {
-          id: "rrb-ntpc-grad-2026",
-          title: "RRB NTPC Graduate Level Recruitment (3,477 Posts)",
-          organization: "Railway Recruitment Board",
-          category: "Graduate",
-          qualification: "Bachelor Degree in Any Stream",
-          totalPosts: "3,477 Posts",
-          lastDate: "20/10/2026",
-          deadlineLabel: "Last Date: 20 Oct 2026",
-          timeBadge: "Just Now",
-          isNew: true,
-          url: "https://rrbapply.gov.in"
-        },
-        {
-          id: "gujarat-police-2026",
-          title: "Gujarat Police Lokrakshak Cadre Recruitment (3,000 Posts)",
-          organization: "State Police",
-          category: "Police / Defense",
-          qualification: "12th Pass / Intermediate",
-          totalPosts: "3,000 Posts",
-          lastDate: "30/10/2026",
-          deadlineLabel: "Last Date: 30 Oct 2026",
-          timeBadge: "15m ago",
-          isNew: true,
-          url: "https://ojas.gujarat.gov.in"
-        }
-      ],
-      latestJobs: [
-        {
-          id: "rrb-ntpc-ug-2026",
-          title: "RRB NTPC 10+2 Undergraduate Posts Recruitment (1,688 Posts)",
-          organization: "Railway Recruitment Board",
-          category: "12th Pass",
-          totalPosts: "1,688 Posts",
-          lastDate: "27/10/2026",
-          deadlineLabel: "Last Date: 27 Oct 2026",
-          timeBadge: "35m ago",
-          isNew: true,
-          url: "https://rrbapply.gov.in"
-        },
-        {
-          id: "ssc-cgl-2026",
-          title: "SSC Combined Graduate Level (CGL) Examination 2026",
-          organization: "SSC",
-          category: "Graduate",
-          totalPosts: "14,582 Posts",
-          lastDate: "15/11/2026",
-          deadlineLabel: "Last Date: 15 Nov 2026",
-          timeBadge: "1h ago",
-          isNew: false,
-          url: "https://ssc.gov.in"
-        }
-      ],
-      admitCards: [
-        {
-          id: "rrb-slip-2026",
-          title: "RRB NTPC Undergraduate City Slip & Admit Card",
-          organization: "RRB",
-          category: "12th Pass",
-          status: "Released",
-          deadlineLabel: "Exam Date: Oct 2026",
-          timeBadge: "25m ago",
-          isNew: true,
-          url: "https://rrbapply.gov.in"
-        },
-        {
-          id: "guj-police-call-letter",
-          title: "Gujarat Police Lokrakshak Physical Call Letter",
-          organization: "State Police",
-          category: "Police / Defense",
-          status: "Released",
-          deadlineLabel: "PST Date: Oct 2026",
-          timeBadge: "2h ago",
-          isNew: false,
-          url: "https://ojas.gujarat.gov.in"
-        }
-      ],
-      results: [
-        {
-          id: "rrb-alp-stage1",
-          title: "Railway RRB ALP Stage 1 Scorecard & Cutoff",
-          organization: "RRB",
-          category: "10th Pass",
-          status: "Declared",
-          deadlineLabel: "Declared: Yesterday",
-          timeBadge: "1h ago",
-          isNew: true,
-          url: "https://rrbapply.gov.in"
-        },
-        {
-          id: "ssc-cgl-tier1-res",
-          title: "SSC CGL Tier 1 Scorecard & Category-wise Cutoff",
-          organization: "SSC",
-          category: "Graduate",
-          status: "Declared",
-          deadlineLabel: "Declared: 25 Sep",
-          timeBadge: "3h ago",
-          isNew: false,
-          url: "https://ssc.gov.in"
-        }
-      ],
-      answerKeys: [
-        { title: "SSC Stenographer Grade C & D Tentative Key 2026", actionUrl: "https://ssc.gov.in", category: "12th Pass", timeBadge: "2h ago", deadlineLabel: "Objection till 02 Oct" },
-        { title: "RRB NTPC CEN 07/2025 Answer Key 2026", actionUrl: "https://rrbapply.gov.in", category: "12th Pass", timeBadge: "5h ago", deadlineLabel: "Objection till 05 Oct" }
-      ],
-      syllabus: [
-        { title: "UP Police Sub-Inspector (SI) Exam Pattern 2026", actionUrl: "https://uppbpb.gov.in", category: "Police / Defense", timeBadge: "1d ago", deadlineLabel: "Official Syllabus" },
-        { title: "RRB NTPC Graduate & UG Exam Syllabus 2026", actionUrl: "https://rrbapply.gov.in", category: "Graduate", timeBadge: "2d ago", deadlineLabel: "CBT Scheme" }
-      ],
-      admissions: [
-        { title: "MCC NEET UG Counselling Round Registration", actionUrl: "https://mcc.nic.in", category: "Graduate", timeBadge: "Today", deadlineLabel: "Last Date: 08 Oct" },
-        { title: "NTA CUET PG Admission Schedule 2026", actionUrl: "https://cuet.nta.nic.in", category: "Graduate", timeBadge: "Yesterday", deadlineLabel: "Active Registration" }
-      ]
+      trending: [],
+      latestJobs: [],
+      admitCards: [],
+      results: [],
+      answerKeys: [],
+      syllabus: [],
+      admissions: []
     };
 
-    // Safe Data Resolution
-    const rawPortalData = (typeof window.SARKARI_DATA === 'object' && window.SARKARI_DATA !== null)
+    const rawData = (typeof window.SARKARI_DATA === 'object' && window.SARKARI_DATA !== null)
       ? window.SARKARI_DATA
       : DEFAULT_DATA;
 
     const portalData = {
-      trending: (rawPortalData.trending && rawPortalData.trending.length > 0) ? rawPortalData.trending : DEFAULT_DATA.trending,
-      latestJobs: (rawPortalData.latestJobs && rawPortalData.latestJobs.length > 0) ? rawPortalData.latestJobs : DEFAULT_DATA.latestJobs,
-      admitCards: (rawPortalData.admitCards && rawPortalData.admitCards.length > 0) ? rawPortalData.admitCards : DEFAULT_DATA.admitCards,
-      results: (rawPortalData.results && rawPortalData.results.length > 0) ? rawPortalData.results : DEFAULT_DATA.results,
-      answerKeys: rawPortalData.answerKeys || DEFAULT_DATA.answerKeys,
-      syllabus: rawPortalData.syllabus || DEFAULT_DATA.syllabus,
-      admissions: rawPortalData.admissions || DEFAULT_DATA.admissions
+      trending: rawData.trending || [],
+      latestJobs: rawData.latestJobs || [],
+      admitCards: rawData.admitCards || [],
+      results: rawData.results || [],
+      answerKeys: rawData.answerKeys || [],
+      syllabus: rawData.syllabus || [],
+      admissions: rawData.admissions || []
     };
-
-    function getSafeUrl(item) {
-      if (!item) return "https://ssc.gov.in";
-      return item.links?.actionUrl || item.actionUrl || item.url || item.link || "https://ssc.gov.in";
-    }
 
     function getSafeCategory(item) {
       if (!item) return "Graduate";
-      const cat = item.category || item.tag || item.section || "Graduate";
-      return cat.toLowerCase() === "undefined" ? "Graduate" : cat;
+      return item.category || item.tag || "Graduate";
     }
 
     function getSafePosts(item) {
       if (!item) return "Check Notice";
-      const val = item.totalPosts || item.posts || item.vacancies;
-      return (!val || val.toLowerCase() === "undefined") ? "Check Notice" : val;
+      return item.totalPosts || item.posts || "Check Notice";
     }
 
     function getSafeDeadline(item, defaultPrefix) {
       if (item.deadlineLabel && item.deadlineLabel !== "null") return item.deadlineLabel;
-      const date = item.lastDate || item.date || item.status || "Active Now";
-      return `${defaultPrefix}: ${date}`;
+      const d = item.lastDate || item.date || item.status || "Active Now";
+      return `${defaultPrefix}: ${d}`;
     }
 
-    // 1. Render Top Trending Grid
+    function openJobDetail(item) {
+      if (!item) return;
+      document.getElementById("modalTitle").innerText = item.title || "Government Recruitment Notice 2026";
+      document.getElementById("modalOrg").innerText = item.organization || item.org || "Official Examination Board";
+      document.getElementById("modalCategory").innerText = getSafeCategory(item);
+      document.getElementById("modalPosts").innerText = getSafePosts(item);
+      document.getElementById("modalDeadline").innerText = getSafeDeadline(item, "Deadline");
+      document.getElementById("modalOfficialLink").href = item.actionUrl || item.link || item.url || "https://ssc.gov.in";
+      
+      openModal("jobDetailModal");
+    }
+
     function renderTrending() {
       const container = document.getElementById("trendingGrid");
       if (!container) return;
 
-      container.innerHTML = portalData.trending.slice(0, 4).map(item => {
-        const link = getSafeUrl(item);
+      const items = portalData.trending.length > 0 ? portalData.trending : portalData.latestJobs;
+
+      container.innerHTML = items.slice(0, 4).map((item, idx) => {
         const category = getSafeCategory(item);
         const posts = getSafePosts(item);
         const deadline = getSafeDeadline(item, "Last Date");
 
         return `
-          <div class="bg-white border border-slate-200 hover:border-indigo-400 rounded-2xl p-4 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between group">
+          <div onclick="openJobDetail(portalData.trending[${idx}] || portalData.latestJobs[${idx}])" 
+               class="cursor-pointer bg-white border border-slate-200 hover:border-indigo-400 rounded-2xl p-4 shadow-sm hover:shadow-md transition flex flex-col justify-between group">
             <div>
               <div class="flex items-center justify-between gap-2 mb-2">
                 <div class="flex items-center gap-1.5">
@@ -516,10 +468,10 @@
                 <span class="text-[11px] text-slate-400 font-semibold">${item.organization || 'Govt Board'}</span>
               </div>
               <h3 class="font-bold text-slate-900 group-hover:text-indigo-600 transition text-sm leading-snug line-clamp-2">
-                ${item.title || 'Official Recruitment Notice 2026'}
+                ${item.title}
               </h3>
               <p class="text-xs text-slate-500 mt-1 line-clamp-1">
-                ${item.qualification || 'Click details to inspect qualification & eligibility criteria'}
+                ${item.qualification || 'Click to view qualification & eligibility criteria'}
               </p>
             </div>
             
@@ -528,14 +480,13 @@
                 🎯 ${posts}
               </span>
               <div class="flex items-center gap-2">
-                <!-- Deadline Pill -->
                 <span class="inline-flex items-center gap-1 px-2 py-1 rounded-md text-[11px] font-bold bg-amber-50 text-amber-800 border border-amber-200">
                   <i class="fa-regular fa-clock text-amber-600 text-[10px]"></i>
                   ${deadline}
                 </span>
-                <a href="${link}" target="_blank" rel="noopener noreferrer" class="bg-slate-900 group-hover:bg-indigo-600 text-white font-bold text-xs px-3 py-1.5 rounded-lg transition shadow-sm">
-                  Apply Online →
-                </a>
+                <span class="bg-slate-900 group-hover:bg-indigo-600 text-white font-bold text-xs px-3 py-1.5 rounded-lg transition shadow-sm">
+                  View Details →
+                </span>
               </div>
             </div>
           </div>
@@ -543,27 +494,25 @@
       }).join('');
     }
 
-    // 2. High-Grade Interactive Feed Card Renderer
-    function renderFeedColumn(containerId, items, defaultDeadlinePrefix, btnLabel) {
+    function renderFeedColumn(containerId, dataKey, defaultPrefix) {
       const container = document.getElementById(containerId);
       if (!container) return;
 
-      if (!items || items.length === 0) {
-        container.innerHTML = `<p class="text-xs text-slate-400 py-4 text-center">No current notifications.</p>`;
+      const items = portalData[dataKey] || [];
+      if (items.length === 0) {
+        container.innerHTML = `<p class="text-xs text-slate-400 py-4 text-center">No active notifications found.</p>`;
         return;
       }
 
-      container.innerHTML = items.map(item => {
-        const link = getSafeUrl(item);
+      container.innerHTML = items.map((item, idx) => {
         const category = getSafeCategory(item);
-        const deadline = getSafeDeadline(item, defaultDeadlinePrefix);
+        const deadline = getSafeDeadline(item, defaultPrefix);
         const timeAgo = item.timeBadge || "Active";
 
         return `
-          <a href="${link}" target="_blank" rel="noopener noreferrer" 
-             class="group relative flex flex-col p-3 bg-white hover:bg-slate-50 border border-slate-200/90 hover:border-indigo-400 rounded-xl transition-all duration-200 shadow-sm hover:shadow-md">
+          <div onclick="openJobDetail(portalData['${dataKey}'][${idx}])" 
+               class="cursor-pointer group relative flex flex-col p-3 bg-white hover:bg-slate-50 border border-slate-200/90 hover:border-indigo-400 rounded-xl transition shadow-sm hover:shadow-md">
             
-            <!-- Top Row: Freshness badge & Organization -->
             <div class="flex items-center justify-between gap-2 mb-1.5">
               <div class="flex items-center gap-1.5">
                 ${item.isNew ? `
@@ -576,63 +525,50 @@
                   ${item.organization || item.org || 'Govt Board'}
                 </span>
               </div>
-              
-              <!-- Time Ago -->
-              <span class="text-[11px] font-medium text-slate-400 group-hover:text-indigo-600 transition-colors flex items-center gap-1">
+              <span class="text-[11px] font-medium text-slate-400 group-hover:text-indigo-600 transition flex items-center gap-1">
                 <i class="fa-regular fa-clock text-[10px]"></i>
                 ${timeAgo}
               </span>
             </div>
 
-            <!-- Title -->
-            <h4 class="text-[12.5px] font-bold text-slate-900 group-hover:text-indigo-600 leading-snug line-clamp-2 transition-colors mb-2">
+            <h4 class="text-[12.5px] font-bold text-slate-900 group-hover:text-indigo-600 leading-snug line-clamp-2 transition mb-2">
               ${item.title}
             </h4>
 
-            <!-- Bottom Row: Category & DEADLINE BADGE -->
             <div class="flex items-center justify-between pt-2 border-t border-slate-100 text-[11px]">
               <span class="px-2 py-0.5 rounded font-semibold text-slate-600 bg-slate-100">
                 ${category}
               </span>
-              
-              <!-- Prominent Last Date / Exam Date Indicator -->
               <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md font-bold bg-amber-50 text-amber-800 border border-amber-200">
                 ${deadline}
               </span>
             </div>
-          </a>
+          </div>
         `;
       }).join('');
     }
 
-    // 3. Render Secondary Mini Hub
     function renderMiniHub(containerId, items) {
       const container = document.getElementById(containerId);
       if (!container) return;
 
-      container.innerHTML = (items || []).map(item => {
-        const link = getSafeUrl(item);
-        const timeAgo = item.timeBadge || "Active";
-        const deadline = item.deadlineLabel || "Available";
-
-        return `
-          <a href="${link}" target="_blank" rel="noopener noreferrer" class="block p-2.5 bg-slate-50 hover:bg-white border border-slate-200/70 hover:border-indigo-300 rounded-lg transition group">
-            <div class="flex items-center justify-between text-[10px] text-slate-400 font-semibold mb-1">
-              <span class="text-indigo-600 font-bold">${item.category || 'Official'}</span>
-              <span>${timeAgo}</span>
-            </div>
-            <div class="font-bold text-slate-800 group-hover:text-indigo-600 transition line-clamp-1">
-              ${item.title}
-            </div>
-            <div class="text-[10px] text-amber-700 font-bold mt-1">
-              ${deadline}
-            </div>
-          </a>
-        `;
-      }).join('');
+      container.innerHTML = (items || []).map(item => `
+        <a href="${item.actionUrl || item.link || item.url || 'https://ssc.gov.in'}" target="_blank" rel="noopener noreferrer" 
+           class="block p-2.5 bg-slate-50 hover:bg-white border border-slate-200/70 hover:border-indigo-300 rounded-lg transition group">
+          <div class="flex items-center justify-between text-[10px] text-slate-400 font-semibold mb-1">
+            <span class="text-indigo-600 font-bold">${item.category || 'Official'}</span>
+            <span>${item.timeBadge || 'Active'}</span>
+          </div>
+          <div class="font-bold text-slate-800 group-hover:text-indigo-600 transition line-clamp-1">
+            ${item.title}
+          </div>
+          <div class="text-[10px] text-amber-700 font-bold mt-1">
+            ${item.deadlineLabel || 'Available'}
+          </div>
+        </a>
+      `).join('');
     }
 
-    // 4. Update Header Pill Counts
     function updateCategoryCounts() {
       const allItems = [
         ...portalData.trending,
@@ -651,42 +587,38 @@
       if (document.getElementById("count-police")) document.getElementById("count-police").innerText = countFor("Police") + countFor("Defense");
     }
 
-    // 5. Master Render Function
     function renderAll() {
       renderTrending();
-      renderFeedColumn("resultsContainer", portalData.results, "Declared", "Check Result");
-      renderFeedColumn("admitCardsContainer", portalData.admitCards, "Exam Date", "Admit Card");
-      renderFeedColumn("latestJobsContainer", portalData.latestJobs, "Last Date", "Apply Online");
+      renderFeedColumn("resultsContainer", "results", "Declared");
+      renderFeedColumn("admitCardsContainer", "admitCards", "Exam Date");
+      renderFeedColumn("latestJobsContainer", "latestJobs", "Last Date");
       
       renderMiniHub("answerKeysContainer", portalData.answerKeys);
       renderMiniHub("syllabusContainer", portalData.syllabus);
       renderMiniHub("admissionsContainer", portalData.admissions);
 
-      // Section Badges
       if (document.getElementById("resultsCountBadge")) {
-        document.getElementById("resultsCountBadge").innerText = portalData.results?.length || 0;
+        document.getElementById("resultsCountBadge").innerText = portalData.results.length;
       }
       if (document.getElementById("admitCountBadge")) {
-        document.getElementById("admitCountBadge").innerText = portalData.admitCards?.length || 0;
+        document.getElementById("admitCountBadge").innerText = portalData.admitCards.length;
       }
       if (document.getElementById("jobsCountBadge")) {
-        document.getElementById("jobsCountBadge").innerText = portalData.latestJobs?.length || 0;
+        document.getElementById("jobsCountBadge").innerText = portalData.latestJobs.length;
       }
 
       updateCategoryCounts();
     }
 
-    // 6. Search Functionality
     function handleSearch(query) {
       const q = query.toLowerCase().trim();
-      const allCards = document.querySelectorAll("#trendingGrid > div, #resultsContainer > a, #admitCardsContainer > a, #latestJobsContainer > a");
+      const allCards = document.querySelectorAll("#trendingGrid > div, #resultsContainer > div, #admitCardsContainer > div, #latestJobsContainer > div");
       allCards.forEach(card => {
         const text = card.innerText.toLowerCase();
         card.style.display = text.includes(q) ? "" : "none";
       });
     }
 
-    // 7. Category Filter Pill Functionality
     function filterCategory(cat) {
       document.querySelectorAll(".filter-pill").forEach(btn => {
         if (btn.dataset.category === cat) {
@@ -705,7 +637,6 @@
       handleSearch(cat);
     }
 
-    // 8. Modals
     function openModal(id) {
       const modal = document.getElementById(id);
       if (modal) {
@@ -722,14 +653,13 @@
       }
     }
 
-    // 9. Age Calculator Computation
     function computeAge() {
       const dobVal = document.getElementById("dobInput").value;
       const cutoffVal = document.getElementById("cutoffInput").value;
       const res = document.getElementById("ageResult");
 
       if (!dobVal || !cutoffVal) {
-        res.innerHTML = `<span class="text-rose-600 font-bold">Please select both your Date of Birth and the Cutoff Date.</span>`;
+        res.innerHTML = `<span class="text-rose-600 font-bold">Please select both dates.</span>`;
         res.classList.remove("hidden");
         return;
       }
@@ -753,12 +683,10 @@
       res.innerHTML = `
         <div class="font-bold text-slate-900">Your Age on ${cutoffVal}:</div>
         <div class="text-indigo-600 font-extrabold text-sm mt-0.5">${years} Years, ${months} Months, ${days} Days</div>
-        <p class="text-slate-500 text-[11px] mt-1">General Sarkari Window: Typically 18 to 30 years (Check your specific notification for category relaxations).</p>
       `;
       res.classList.remove("hidden");
     }
 
-    // 10. Photo Resizer (Client-Side Canvas)
     function compressCandidatePhoto() {
       const fileInput = document.getElementById("photoInput");
       const res = document.getElementById("compressResult");
@@ -783,10 +711,10 @@
 
           const dataUrl = canvas.toDataURL("image/jpeg", 0.75);
           res.innerHTML = `
-            <div class="text-emerald-700 font-bold mb-2">✅ Image Resized to Govt Specifications (350x450, ~35 KB)</div>
+            <div class="text-emerald-700 font-bold mb-2">✅ Compressed to ~35 KB (350x450 Govt Spec)</div>
             <img src="${dataUrl}" class="w-24 h-32 object-cover mx-auto rounded border border-slate-300 shadow-sm mb-2" />
-            <a href="${dataUrl}" download="Sarkari_Candidate_Photo.jpg" class="inline-block bg-slate-900 hover:bg-slate-800 text-white font-bold px-4 py-1.5 rounded-lg text-xs">
-              Download Compressed Image
+            <a href="${dataUrl}" download="Sarkari_Photo.jpg" class="inline-block bg-slate-900 hover:bg-slate-800 text-white font-bold px-4 py-1.5 rounded-lg text-xs">
+              Download Photo
             </a>
           `;
           res.classList.remove("hidden");
